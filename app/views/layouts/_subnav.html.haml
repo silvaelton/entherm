@@ -4,10 +4,6 @@
       %span.sr-only Toggle navigation
       %i.fa.fa-bars
     %nav.collapse.mainnav-collapse{:role => "navigation"}
-      %form.mainnav-form
-        %input.form-control.input-md.mainnav-search-query{:placeholder => "Search", :type => "text"}
-          %button.btn.btn-sm.mainnav-form-btn
-            %i.fa.fa-search
       %ul.mainnav-menu
         %li.dropdown.active
           %a.dropdown-toggle{"data-hover" => "dropdown", "data-toggle" => "dropdown", :href => "https://jumpstartthemes.com/demo/v/3.0.0/templates/admin-1/index.html"}
@@ -37,11 +33,11 @@
                   %ul.mega-menu-menu
                     %li.mega-menu-header Módulos
                     %li
-                      %a{:href => "https://jumpstartthemes.com/demo/v/3.0.0/templates/admin-1/form-basic.html"}
+                      %a{:href => "#{commercial.companies_path}"}
                         %i.fa.fa-edit.dropdown-icon
                         Gestão de empresas
                     %li
-                      %a{:href => "https://jumpstartthemes.com/demo/v/3.0.0/templates/admin-1/form-pickers.html"}
+                      %a{:href => "#{commercial.contracts_path}"}
                         %i.fa.fa-hand-pointer-o.dropdown-icon
                         Gestão de contratos
            
@@ -55,22 +51,22 @@
                 %ul.mega-menu-menu
                   %li.mega-menu-header Externo
                   %li
-                    %a{:href => "https://jumpstartthemes.com/demo/v/3.0.0/templates/admin-1/page-profile.html"}
+                    %a{:href => "#{deal.orders_path}"}
                       %i.fa.fa-user.dropdown-icon
                       Pedidos
                   %li
-                    %a{:href => "https://jumpstartthemes.com/demo/v/3.0.0/templates/admin-1/page-profile.html"}
+                    %a{:href => "#"}
                       %i.fa.fa-user.dropdown-icon
                       Solicitantes
                   %li
-                    %a{:href => "https://jumpstartthemes.com/demo/v/3.0.0/templates/admin-1/page-settings.html"}
+                    %a{:href => "#"}
                       %i.fa.fa-cogs.dropdown-icon
                       Balance de pedidos
       
                   %li.mega-menu-header
                     Interno
                   %li
-                    %a{:href => "https://jumpstartthemes.com/demo/v/3.0.0/templates/admin-1/page-sitemap.html"}
+                    %a{:href => "deal.new_order_path"}
                       %i.fa.fa-sitemap.dropdown-icon
                       Nova compra
                   %li
@@ -240,49 +236,18 @@
           %a.dropdown-toggle{"data-hover" => "dropdown", "data-toggle" => "dropdown", :href => "javascript:;"}
             Recursos Humano
             %i.mainnav-caret
+
           %ul.dropdown-menu.mega-menu-2{:role => "menu"}
             %li
-              .mega-menu-content
-                .mega-menu-col
-                  .demo-block
-                    %a.demo-launcher{:href => "https://jumpstartthemes.com/demo/v/3.0.0/templates/admin-1/index.html"}
-                      %img.img-responsive{:alt => "", :src => "./Analytics Dashboard · MVP Ready_files/theme-drop-admin-1.png"}
-                        View Admin Layout #1
-                    .demo-external
-                      %a{:href => "https://jumpstartthemes.com/demo/v/3.0.0/templates/admin-1/index.html", :target => "_blank"}
-                        %small
-                          %i.fa.fa-external-link>
-                          \&nbsp;&nbsp;(Open in new tab)
-                  / /.demo-block
-                  .demo-block
-                    %a.demo-launcher{:href => "https://jumpstartthemes.com/demo/v/3.0.0/templates/landing/index.html"}
-                      %img.img-responsive{:alt => "", :src => "./Analytics Dashboard · MVP Ready_files/theme-drop-landing.png"}
-                        View Frontend Template
-                    .demo-external
-                      %a{:href => "https://jumpstartthemes.com/demo/v/3.0.0/templates/landing/index.html", :target => "_blank"}
-                        %small
-                          %i.fa.fa-external-link>
-                          \&nbsp;&nbsp;(Open in new tab)
-                  / /.demo-block
-                / /.mega-menu-col
-                .mega-menu-col
-                  .demo-block
-                    %a.demo-launcher{:href => "https://jumpstartthemes.com/demo/v/3.0.0/templates/admin-2/index.html"}
-                      %img.img-responsive{:alt => "", :src => "./Analytics Dashboard · MVP Ready_files/theme-drop-admin-2.png"}
-                        View Admin Layout #2
-                    .demo-external
-                      %a{:href => "https://jumpstartthemes.com/demo/v/3.0.0/templates/admin-2/index.html", :target => "_blank"}
-                        %small
-                          %i.fa.fa-external-link>
-                          \&nbsp;&nbsp;(Open in new tab)
-                  / /.demo-block
-                  .demo-block
-                    %a.demo-launcher{:href => "https://jumpstartthemes.com/demo/v/3.0.0/templates/launch/index.html"}
-                      %img.img-responsive{:alt => "", :src => "./Analytics Dashboard · MVP Ready_files/theme-drop-launch.png"}
-                        View Launch Template
-                    .demo-external
-                      %a{:href => "https://jumpstartthemes.com/demo/v/3.0.0/templates/launch/index.html", :target => "_blank"}
-                        %small
-                          %i.fa.fa-external-link>
-                          \&nbsp;&nbsp;(Open in new tab)
-                  / /.demo-block
+              .mega-menu-col
+                %ul.mega-menu-menu
+                  %li.mega-menu-header Interno
+                  %li
+                    %a{:href => "https://jumpstartthemes.com/demo/v/3.0.0/templates/admin-1/page-profile.html"}
+                      %i.fa.fa-user.dropdown-icon
+                      Contas à pagar
+                  %li
+                    %a{:href => "https://jumpstartthemes.com/demo/v/3.0.0/templates/admin-1/page-profile.html"}
+                      %i.fa.fa-user.dropdown-icon
+                      Contas à receber
+ 
