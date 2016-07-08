@@ -1,78 +1,138 @@
-%nav.navbar.navbar-default.navbar-fixed-top.am-top-header
-  .container-fluid
+%header.navbar{:role => "banner"}
+  .container
     .navbar-header
-      .page-title
-        %span White Header
-      %a.am-toggle-left-sidebar.navbar-toggle.collapsed{:href => "#{main_app.root_path}"}
-        %span.icon-bar
-          %span
-          %span
-          %span
-      %a.navbar-brand{:href => "#{main_app.root_path}"}
-
-    #am-navbar-collapse.collapse.navbar-collapse
-      %ul.nav.navbar-nav.navbar-right.am-user-nav
-        %li.dropdown
-          %a.dropdown-toggle{"aria-expanded" => "false", "data-toggle" => "dropdown", :href => "http://themeslivepreview.com/amaretti/layouts-white-header.php#", :role => "button"}
-            %img{:src => "/images/avatar-default.png"}/
-            %span.user-name= current_user.email
-            %span.angle-down.s7-angle-down
+      %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
+        %span.sr-only Toggle navigation
+        %i.fa.fa-cog
+      %a.navbar-brand.navbar-brand-img{:href => "https://jumpstartthemes.com/demo/v/3.0.0/templates/admin-1/index.html"}
+        %img{:alt => "MVP Ready", :src => "./Analytics Dashboard · MVP Ready_files/logo.png"}
+    / /.navbar-header
+    %nav.collapse.navbar-collapse{:role => "navigation"}
+      %ul.nav.navbar-nav.navbar-left
+        %li.dropdown.navbar-notification
+          %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "https://jumpstartthemes.com/demo/v/3.0.0/templates/admin-1/page-notifications.html"}
+            %i.fa.fa-bell.navbar-notification-icon
+            %span.visible-xs-inline &nbsp;Notifications
+            %b.badge.badge-primary 3
+          .dropdown-menu
+            .dropdown-header &nbsp;Notifications
+            .slimScrollDiv{:style => "position: relative; overflow: hidden; width: auto; height: 225px;"}
+              .notification-list{:style => "overflow: hidden; width: auto; height: 225px;"}
+                %a.notification{:href => "https://jumpstartthemes.com/demo/v/3.0.0/templates/admin-1/page-notifications.html"}
+                  %span.notification-icon
+                    %i.fa.fa-cloud-upload.text-primary
+                  %span.notification-title Notification Title
+                  %span.notification-description Praesent dictum nisl non est sagittis luctus.
+                  %span.notification-time 20 minutes ago
+                / / .notification
+                %a.notification{:href => "https://jumpstartthemes.com/demo/v/3.0.0/templates/admin-1/page-notifications.html"}
+                  %span.notification-icon
+                    %i.fa.fa-ban.text-secondary
+                  %span.notification-title Notification Title
+                  %span.notification-description Lorem ipsum dolor sit amet, consectetur adipisicing elit...
+                  %span.notification-time 20 minutes ago
+                / / .notification
+                %a.notification{:href => "https://jumpstartthemes.com/demo/v/3.0.0/templates/admin-1/page-notifications.html"}
+                  %span.notification-icon
+                    %i.fa.fa-warning.text-tertiary
+                  %span.notification-title Storage Space Almost Full!
+                  %span.notification-description Praesent dictum nisl non est sagittis luctus.
+                  %span.notification-time 20 minutes ago
+                / / .notification
+                %a.notification{:href => "https://jumpstartthemes.com/demo/v/3.0.0/templates/admin-1/page-notifications.html"}
+                  %span.notification-icon
+                    %i.fa.fa-ban.text-danger
+                  %span.notification-title Sync Error
+                  %span.notification-description Lorem ipsum dolor sit amet, consectetur adipisicing elit...
+                  %span.notification-time 20 minutes ago
+                / / .notification
+              .slimScrollBar{:style => "width: 5px; position: absolute; top: 0px; opacity: 0.4; display: block; border-radius: 7px; z-index: 99; right: 1px; background: rgb(136, 136, 136);"}
+              .slimScrollRail{:style => "width: 5px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; opacity: 0.2; z-index: 90; right: 1px; background: rgb(153, 153, 153);"}
+            / / .notification-list
+            %a.notification-link{:href => "https://jumpstartthemes.com/demo/v/3.0.0/templates/admin-1/page-notifications.html"} View All Notifications
+          / / .dropdown-menu
+        %li.dropdown.navbar-notification
+          %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "https://jumpstartthemes.com/demo/v/3.0.0/templates/admin-1/page-notifications.html"}
+            %i.fa.fa-envelope.navbar-notification-icon
+            %span.visible-xs-inline &nbsp;Messages
+          .dropdown-menu
+            .dropdown-header Messages
+            .slimScrollDiv{:style => "position: relative; overflow: hidden; width: auto; height: 225px;"}
+              .notification-list{:style => "overflow: hidden; width: auto; height: 225px;"}
+                %a.notification{:href => "https://jumpstartthemes.com/demo/v/3.0.0/templates/admin-1/page-notifications.html"}
+                  .notification-icon
+                    %img{:alt => "", :src => "./Analytics Dashboard · MVP Ready_files/avatar-3-md.jpg"}/
+                  .notification-title New Message
+                  .notification-description Praesent dictum nisl non est sagittis luctus.
+                  .notification-time 20 minutes ago
+                / / .notification
+                %a.notification{:href => "https://jumpstartthemes.com/demo/v/3.0.0/templates/admin-1/page-notifications.html"}
+                  .notification-icon
+                    %img{:alt => "", :src => "./Analytics Dashboard · MVP Ready_files/avatar-3-md.jpg"}/
+                  .notification-title New Message
+                  .notification-description Lorem ipsum dolor sit amet, consectetur adipisicing elit...
+                  .notification-time 20 minutes ago
+                / / .notification
+                %a.notification{:href => "https://jumpstartthemes.com/demo/v/3.0.0/templates/admin-1/page-notifications.html"}
+                  .notification-icon
+                    %img{:alt => "", :src => "./Analytics Dashboard · MVP Ready_files/avatar-4-md.jpg"}/
+                  .notification-title New Message
+                  .notification-description Lorem ipsum dolor sit amet, consectetur adipisicing elit...
+                  .notification-time 20 minutes ago
+                / / .notification
+                %a.notification{:href => "https://jumpstartthemes.com/demo/v/3.0.0/templates/admin-1/page-notifications.html"}
+                  .notification-icon
+                    %img{:alt => "", :src => "./Analytics Dashboard · MVP Ready_files/avatar-5-md.jpg"}/
+                  .notification-title New Message
+                  .notification-description Lorem ipsum dolor sit amet, consectetur adipisicing elit...
+                  .notification-time 20 minutes ago
+                / / .notification
+              .slimScrollBar{:style => "width: 5px; position: absolute; top: 0px; opacity: 0.4; display: block; border-radius: 7px; z-index: 99; right: 1px; background: rgb(136, 136, 136);"}
+              .slimScrollRail{:style => "width: 5px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; opacity: 0.2; z-index: 90; right: 1px; background: rgb(153, 153, 153);"}
+            / / .notification-list
+            %a.notification-link{:href => "https://jumpstartthemes.com/demo/v/3.0.0/templates/admin-1/page-notifications.html"} View All Messages
+          / / .dropdown-menu
+        %li.dropdown.navbar-notification.empty
+          %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "https://jumpstartthemes.com/demo/v/3.0.0/templates/admin-1/page-notifications.html"}
+            %i.fa.fa-warning.navbar-notification-icon
+            %span.visible-xs-inline &nbsp;&nbsp;Alerts
+          .dropdown-menu
+            .dropdown-header Alerts
+            .slimScrollDiv{:style => "position: relative; overflow: hidden; width: auto; height: 225px;"}
+              .notification-list{:style => "overflow: hidden; width: auto; height: 225px;"}
+                %h4.notification-empty-title No alerts here.
+                %p.notification-empty-text Check out what other makers are doing on Explore!
+              .slimScrollBar{:style => "width: 5px; position: absolute; top: 0px; opacity: 0.4; display: block; border-radius: 7px; z-index: 99; right: 1px; background: rgb(136, 136, 136);"}
+              .slimScrollRail{:style => "width: 5px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; opacity: 0.2; z-index: 90; right: 1px; background: rgb(153, 153, 153);"}
+            / / .notification-list
+            %a.notification-link{:href => "https://jumpstartthemes.com/demo/v/3.0.0/templates/admin-1/page-notifications.html"} View All Alerts
+          / / .dropdown-menu
+      %ul.nav.navbar-nav.navbar-right
+        %li
+          %a{:href => "javsacript:;"} Projects
+        %li
+          %a{:href => "javascript:;"} Support
+        %li.dropdown.navbar-profile
+          %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "javascript:;"}
+            %img.navbar-profile-avatar{:alt => "", :src => "./Analytics Dashboard · MVP Ready_files/avatar-6-sm.jpg"}
+              %span.visible-xs-inline @peterlandt &nbsp;
+              %i.fa.fa-caret-down
           %ul.dropdown-menu{:role => "menu"}
             %li
-              %a{:href => "#{main_app.edit_user_registration_path}" }
-                %span.icon.s7-user>
-                Meu Perfil
+              %a{:href => "https://jumpstartthemes.com/demo/v/3.0.0/templates/admin-1/page-profile.html"}
+                %i.fa.fa-user
+                \&nbsp;&nbsp;My Profile
             %li
-              %a{rel: 'nofollow', href: "#{main_app.destroy_user_session_path}#", data: {method: 'delete'}}
-                %span.icon.s7-power>
-                Sair
-      %ul.nav.navbar-nav.am-nav-right
-        - if policy(:privilege).administrator?
-          %li.dropdown
-            %a.dropdown-toggle{"aria-expanded" => "false", "data-toggle" => "dropdown", :href => "http://themeslivepreview.com/amaretti/layouts-white-header.php#", :role => "button"}
-              Administração Geral
-              %span.angle-down.s7-angle-down
-            %ul.dropdown-menu{:role => "menu"}
-              %li
-                %a{:href => "#{access.users_path}"} Usuários & Permissões
-              %li
-                %a{:href => "http://themeslivepreview.com/amaretti/layouts-white-header.php#"} Log de Acesso
-              %li.divider
-              %li
-                %a{:href => "#{commercial.contracts_path}"} Contratos
-              %li
-                %a{:href => "#{commercial.companies_path}"} Empresas
-          %li.dropdown
-            %a.dropdown-toggle{"aria-expanded" => "false", "data-toggle" => "dropdown", :href => "http://themeslivepreview.com/amaretti/layouts-white-header.php#", :role => "button"}
-              Notificações & Avisos
-              %span.angle-down.s7-angle-down
-            %ul.dropdown-menu{:role => "menu"}
-              %li
-                %a{:href => "#{access.alerts_path}"} Notificações
-
-      %ul.nav.navbar-nav.navbar-right.am-icons-nav
-        %li.dropdown
-          %a.dropdown-toggle{"aria-expanded" => "false", "data-toggle" => "dropdown", :href => "http://themeslivepreview.com/amaretti/layouts-white-header.php#", :role => "button"}
-            %span.icon.s7-bell
-            %span.indicator
-          %ul.dropdown-menu.am-notifications
+              %a{:href => "https://jumpstartthemes.com/demo/v/3.0.0/templates/admin-1/page-pricing-plans.html"}
+                %i.fa.fa-dollar
+                \&nbsp;&nbsp;Plans &amp; Billing
             %li
-              .title
-                Notificações
-                %span.badge= Access::Alert.actives.limit(6).count
-              .list
-                .am-scroller.nano.has-scrollbar
-                  .content.nano-content{:style => "right: -15px;", :tabindex => "0"}
-                    %ul
-                      - Access::Alert.actives.limit(6).each do |alert|
-                        %li.active{class: "#{alert.color}"}
-                          %a{:href => "#{access.alert_path(alert)}"}
-                            .logo
-                              %span.icon.s7-pin
-                            .user-content
-                              %span.circle
-                              %span.text-content
-                                %b= alert.title.humanize
-                              %span.date= alert.created_at.strftime('%d/%m/%Y às %H:%M')
-                              %span.date= alert.user.name if alert.user.present?
-      
+              %a{:href => "https://jumpstartthemes.com/demo/v/3.0.0/templates/admin-1/page-settings.html"}
+                %i.fa.fa-cogs
+                \&nbsp;&nbsp;Settings
+            %li.divider
+            %li
+              %a{:href => "https://jumpstartthemes.com/demo/v/3.0.0/templates/admin-1/account-login.html"}
+                %i.fa.fa-sign-out
+                \&nbsp;&nbsp;Logout
+  / /.container

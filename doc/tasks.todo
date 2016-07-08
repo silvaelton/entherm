@@ -1,52 +1,47 @@
+módulo administrativo:
+ ☐ cadastro de usuários 
+ ☐ cadastro de solicitantes
 
-@notificações
- ✔ criar tabela de notificações @done (15-10-20 21:59)
- ✔ crud de notificações para todos os usuários da empresa @done (15-10-20 21:59)
+módulo comercial:
+ ☐ cadastro de empresas
+ ☐ cadastro de contratos
 
-@invertory
- ✔ criar formulário de entrada no estoque, busca o produto e adiciona quantidade, não havendo adiciona o produto @done (15-10-20 16:08)
- ✔ criar tabela de saidas do estoque @done (15-10-20 16:09)
- ✔ criar formulário de saída do estoque, ao clicar em saida abrir modal, pesquisa produto e dizer a quantidade saíndo @done (15-10-20 16:09)
- ✔ emitir csv de tudo @done (15-10-21 23:03)
+módulo compras:
+ ☐ cadastro de fornecedores
+ ☐ cadastro de categorias de compra
+ ☐ cadastro de compras
+ ☐ cadastro de itens de compra
+ ☐ recebimento de pedidos
+ ☐ solicitação de pedidos
+ ☐ cadastro de itens patrimoniais
+ ☐ cadastro de itens ao estoque
+ ☐ entrada ao estoque
+ ☐ saída do estoque
+ ☐ relatorio geral de compras por contrato e período
+ ☐ emissão de FPA
+ ☐ pesquisa de FPA
 
+módulo financeiro:
+ ☐ centro de custo
+ ☐ contas á pagar
+ ☐ contas á receber
+ ☐ categorias de conta
+ ☐ vínculo de contas com compras
+ ☐ vínculo de contas com fornecedores
+ ☐ gestão de boletos (vencimentos)
+ ☐ caixa por contrato & centro de custo
+ ☐ entrada & saída de caixa
+ ☐ relatório de fluxo de caixa diário
+ ☐ relatório de caixa mensal
+ ☐ relatório de recebimentos
+ ☐ relatório de pagamentos
+ ☐ relatório de pagamento de fornecedores
+ ☐ relatório geral por centro de custo & categorias
 
+infraestrutura:
+  ☐ criação de domínio
+  ☐ configuração de cloudflare
+  ☐ deploy heroku
 
-@purchases
- ✔ listagem css @done (15-10-20 16:09)
- ✔ formulário css @done (15-10-20 16:09)
- ✔ modal para inserir fornecedor automaticamente @done (15-10-20 16:09)
- ✔ chosen-select para busca do fornecedor @done (15-10-20 16:09)
- ✔ adicionar campo select para dizer se é uma compra voltada para o estoque @done (15-10-20 16:09)
- ✔ criar lógica onde se o campo de estoque for sim, copiar o produto para dentro do estoque, havendo ele já adicionar quantidade @done (15-10-20 16:09)
- ✔ _blank para emitir FPA @done (15-10-20 16:09)
- ☐ emitir ordem de compra
- ✔ deixar filtros mais inteligentes com has_scope @done (15-10-20 16:09)
- ☐ validar datas nos filtros
- ☐ colocar css print para imprimir as listas
- ☐ exportar csv da listagem atual
- ☐ verificar sobre manter a listagem que o filtro proporciona
-
-@interface
- ✔ breadcrumbs @done (15-10-18 09:48)
- ☐ logo entherm em P&B (instalar photshop ou máquina virtual windows)
- ✔ correção de datatables @done (15-10-18 10:03)
-
-@users
- ✔ crud de permissões por módulo @done (15-10-18 11:21)
- ✔ crud de permissões vínculadas ao usuário, adicionar campo de array e inserir as permissões @done (15-10-18 11:21)
- ☐ funcionalidade de resetar a senha do usuário para entherm123456789
- ☐ adicionar campo de avatar para usuário
- ✔ edição de perfil de usuário logado @done (15-10-20 16:09)
- ☐ pundit nos controllers, menus, visão do usuário apartir de seu tipo e permissões
- ☐ foto do perfil
-
-@suppliers
- ✔ correção de visualização de tabela @done (15-10-20 16:09)
- ✔ correção de visualização de formulário @done (15-10-20 16:10)
-
-@permissões
- ☐ adicionar permissão de todos os menus e controllers via pundit
- ☐ adicionar tabela de logs para visualizar os movimentos dos usuários
-
-@patrimony
- ✔ crud [contract, data de entrada, unidade, descrição, numero de patrimonio, estado, valor estimado, numero nota fiscal, foto, data devolucção, resposnsavel] @done (15-10-21 23:04)
+entregas:
+  ☐ @due(2016-07-11) - Enviar e-mail para Alan para homologação @done (16-07-08 14:25)

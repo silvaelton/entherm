@@ -9,14 +9,12 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
 
   %body
-    .am-wrapper
-      .not-print
-        = render 'layouts/nav'
-        = render 'layouts/sidebar'
-      .am-content
-        .not-print
+    #wrapper
+      = render 'layouts/nav'
+      = render 'layouts/subnav'
+      .content
+        .container
           = render 'layouts/breadcrumb'
-        .main-content
           = yield
     / Modal
     #modal.modal.fade{"aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}

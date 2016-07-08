@@ -1,8 +1,9 @@
 module PersonalDepartament
   class FileUploader < CarrierWave::Uploader::Base
         
-    storage :fog
-
+    storage :fog  if Rails.env.production?
+    storage :file if Rails.env.development?
+    
     def store_dir
       'uploads/personal_departament'
     end

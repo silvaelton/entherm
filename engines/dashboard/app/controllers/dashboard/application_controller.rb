@@ -1,9 +1,14 @@
 require_dependency 'application_controller'
 module Dashboard
   class ApplicationController < ActionController::Base
-    before_action :authenticate_user!
- 	layout 'application'
+    layout 'application'
   	
   	include Pundit
+
+    helper_method :current_user
+
+    def current_user
+      nil
+    end
   end
 end

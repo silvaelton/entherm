@@ -1,10 +1,11 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui/autocomplete
-//= require amaretti/js/bootstrap.min
-//= require amaretti/js/mask.jquery.min
-//= require amaretti/js/mask.money.jquery.min
-//= require amaretti/js/select2.min
+//= require analytics/javascripts/bootstrap.min
+//= require analytics/javascripts/jquery.slimscroll.min
+//= require analytics/javascripts/mask.jquery.min
+//= require analytics/javascripts/mask.money.jquery.min
+//= require analytics/javascripts/select2.min
 //= require dataTables/jquery.dataTables
 //= require dataTables/bootstrap/3/jquery.dataTables.bootstrap  
 //= require table.export

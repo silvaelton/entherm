@@ -1,42 +1,9 @@
 /*
- *= require amaretti/css/select2.min
- *= require amaretti/css/nanoscroller
- *= require amaretti/css/bootstrap
- *= require amaretti/css/style
+ *= require analytics/stylesheets/bootstrap.min
+ *= require analytics/stylesheets/base
+ *= require analytics/stylesheets/mvpready-admin
  *= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
  *= require jquery-ui/autocomplete
  */
 
 
-
-.azul {
-  background-color: #3F77BF !important;
-}
-
-.azul .text-content, .azul .date {
-  color: white !important;
-}
-
-.vermelha {
-  background-color: #ef6262 !important;
-}
-
-.vermelha .text-content, .vermelha .date {
-  color: white !important;
-}
-
-.verde {
-  background-color: #7ACCBE !important;
-}
-
-.verde .text-content, .verde .date {
-  color: white !important;
-}
-
-.amarela {
-  background-color: #FFC870 !important;  
-}
-
-.amarela .text-content, .amarela .date {
-  color: white !important;
-}
