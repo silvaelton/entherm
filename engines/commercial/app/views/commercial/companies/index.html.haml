@@ -1,10 +1,10 @@
 .row
   .col-sm-12
-    %section.panel
-      %header.panel-heading
-        %b Listagem de Empresas
-        = link_to "Nova Empresa", new_company_path, class: 'btn btn-success btn-xs pull-right'
-      .panel-body
+    .portlet.portlet-boxed
+      .portlet-header
+        %h4.portlet-title Listagem de Empresas
+        = link_to "+ Adicionar empresa", new_company_path, class: 'btn btn-secondary btn-sm pull-right'
+      .portlet-body
         .adv-table
           .row
             .col-md-12
@@ -24,6 +24,6 @@
                       %td= "#{company.state.acronym}" if company.state.present?
                       %td= company.cep
                       %td.col-md-2
-                        = link_to "", edit_company_path(company), class: 'btn btn-primary btn-sm icon-edit', title: "Editar"
-                        = link_to "", company_path(company), method: :delete, data: { confirm: t(:confirm_destroy)}, class: 'btn btn-danger btn-sm icon-remove', title: "Remover"
+                        = link_to "", edit_company_path(company), class: 'btn btn-primary btn-sm glyphicon glyphicon-pencil', title: "Editar"
+                        = link_to "", company_path(company), method: :delete, data: { confirm: t(:confirm_destroy)}, class: 'btn btn-danger btn-sm glyphicon glyphicon-remove', title: "Remover"
                  
