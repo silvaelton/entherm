@@ -5,10 +5,10 @@ default: &default
 
 development:
   <<: *default
-  database: da7t95snjt6gi7
-  username: ewmnpglmzizfys
-  password: WoEhKstoFoWVj5q3cFuHJTEG8K
-  host: ec2-54-163-228-188.compute-1.amazonaws.com
+  database: entherm_development
+  username: postgres
+  password: 123456879
+  host: localhost
 
 production:
   <<: *default
