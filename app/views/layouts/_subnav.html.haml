@@ -5,23 +5,9 @@
       %i.fa.fa-bars
     %nav.collapse.mainnav-collapse{:role => "navigation"}
       %ul.mainnav-menu
-        %li.dropdown.active
-          %a.dropdown-toggle{"data-hover" => "dropdown", "data-toggle" => "dropdown", :href => "https://jumpstartthemes.com/demo/v/3.0.0/templates/admin-1/index.html"}
+        %li.active
+          %a{:href => "#{dashboard.root_path}"}
             Visão Geral
-            %i.mainnav-caret
-          %ul.dropdown-menu{:role => "menu"}
-            %li
-              %a{:href => "https://jumpstartthemes.com/demo/v/3.0.0/templates/admin-1/index.html"}
-                %i.fa.fa-dashboard.dropdown-icon
-                Analytics Dashboard
-            %li
-              %a{:href => "https://jumpstartthemes.com/demo/v/3.0.0/templates/admin-1/dashboard-2.html"}
-                %i.fa.fa-dashboard.dropdown-icon
-                Sidebar Dashboard
-            %li
-              %a{:href => "https://jumpstartthemes.com/demo/v/3.0.0/templates/admin-1/dashboard-3.html"}
-                %i.fa.fa-dashboard.dropdown-icon
-                Reports Dashboard
         %li.dropdown
           %a.dropdown-toggle{"data-hover" => "dropdown", "data-toggle" => "dropdown", :href => "javascript:;"}
             Comercial
@@ -34,11 +20,9 @@
                     %li.mega-menu-header Módulos
                     %li
                       %a{:href => "#{commercial.companies_path}"}
-                        %i.fa.fa-edit.dropdown-icon
                         Gestão de empresas
                     %li
                       %a{:href => "#{commercial.contracts_path}"}
-                        %i.fa.fa-hand-pointer-o.dropdown-icon
                         Gestão de contratos
            
         %li.dropdown
@@ -51,90 +35,55 @@
                 %ul.mega-menu-menu
                   %li.mega-menu-header Externo
                   %li
-                    %a{:href => "#{deal.orders_path}"}
-                      %i.fa.fa-user.dropdown-icon
+                    %a{:href => "#{deal.control_orders_path}"}
                       Pedidos
                   %li
                     %a{:href => "#"}
-                      %i.fa.fa-user.dropdown-icon
-                      Solicitantes
-                  %li
-                    %a{:href => "#"}
-                      %i.fa.fa-cogs.dropdown-icon
                       Balance de pedidos
       
                   %li.mega-menu-header
                     Interno
                   %li
-                    %a{:href => "deal.new_order_path"}
-                      %i.fa.fa-sitemap.dropdown-icon
+                    %a{:href => "#{deal.new_purchase_path}"}
                       Nova compra
                   %li
-                    %a{:href => "https://jumpstartthemes.com/demo/v/3.0.0/templates/admin-1/page-blank.html"}
-                      %i.fa.fa-file-o.dropdown-icon
+                    %a{:href => "#{deal.purchases_path}"}
                       Listagem de compras
                   %li
-                    %a{:href => "https://jumpstartthemes.com/demo/v/3.0.0/templates/admin-1/page-404.html"}
-                      %i.fa.fa-ban.dropdown-icon
-                      Categorias de compra
-                  %li
-                    %a{:href => "https://jumpstartthemes.com/demo/v/3.0.0/templates/admin-1/page-500.html"}
-                      %i.fa.fa-ban.dropdown-icon
+                    %a{:href => "#"}
                       Itens de compras
                   %li
-                    %a{:href => "https://jumpstartthemes.com/demo/v/3.0.0/templates/admin-1/page-maintenance.html", :target => "_blank"}
-                      %i.fa.fa-cogs.dropdown-icon
+                    %a{:href => "#"}
                       Balance geral
               / /.mega-menu-col
               .mega-menu-col
                 %ul.mega-menu-menu
                   %li.mega-menu-header Pesquisa
                   %li
-                    %a{:href => "https://jumpstartthemes.com/demo/v/3.0.0/templates/admin-1/account-login.html", :target => "_blank"}
-                      %i.fa.fa-unlock.dropdown-icon
+                    %a{:href => "deal.fpa_purchase_path", :target => "_blank"}
                       Pesquisa FPA
-                      %small
-                        %i.fa.fa-external-link.pull-right.text-secondary{:style => "position: relative; top: 6px;"}
                   %li
-                    %a{:href => "https://jumpstartthemes.com/demo/v/3.0.0/templates/admin-1/account-login-social.html", :target => "_blank"}
-                      %i.fa.fa-unlock.dropdown-icon
+                    %a{:href => "#"}
                       Pesquisa por produto
-                      %small
-                        %i.fa.fa-external-link.pull-right.text-secondary{:style => "position: relative; top: 6px;"}
                   %li
-                    %a{:href => "https://jumpstartthemes.com/demo/v/3.0.0/templates/admin-1/account-signup.html", :target => "_blank"}
-                      %i.fa.fa-pencil.dropdown-icon
+                    %a{:href => "#{deal.suppliers_path}"}
                       Pesquisa por fornecedor
-                      %small
-                        %i.fa.fa-external-link.pull-right.text-secondary{:style => "position: relative; top: 6px;"}
+                      
               .mega-menu-col
                 %ul.mega-menu-menu
                   %li.mega-menu-header Relatórios
                   %li
-                    %a{:href => "https://jumpstartthemes.com/demo/v/3.0.0/templates/admin-1/account-login.html", :target => "_blank"}
-                      %i.fa.fa-unlock.dropdown-icon
+                    %a{:href => "#"}
                       Geral
-                      %small
-                        %i.fa.fa-external-link.pull-right.text-secondary{:style => "position: relative; top: 6px;"}
                   %li
-                    %a{:href => "https://jumpstartthemes.com/demo/v/3.0.0/templates/admin-1/account-login-social.html", :target => "_blank"}
-                      %i.fa.fa-unlock.dropdown-icon
+                    %a{:href => "#"}
                       Por contrato & período
-                      %small
-                        %i.fa.fa-external-link.pull-right.text-secondary{:style => "position: relative; top: 6px;"}
                   %li
-                    %a{:href => "https://jumpstartthemes.com/demo/v/3.0.0/templates/admin-1/account-signup.html", :target => "_blank"}
-                      %i.fa.fa-pencil.dropdown-icon
+                    %a{:href => "#"}
                       Por categoria de compras
-                      %small
-                        %i.fa.fa-external-link.pull-right.text-secondary{:style => "position: relative; top: 6px;"}
                   %li
-                    %a{:href => "https://jumpstartthemes.com/demo/v/3.0.0/templates/admin-1/account-forgot.html", :target => "_blank"}
-                      %i.fa.fa-envelope.dropdown-icon
+                    %a{:href => "#"}
                       Por fornecedor
-                      %small
-                        %i.fa.fa-external-link.pull-right.text-secondary{:style => "position: relative; top: 6px;"}
-              / /.mega-menu-col
         %li.dropdown
           %a.dropdown-toggle{"data-hover" => "dropdown", "data-toggle" => "dropdown", :href => "javascript:;"}
             Financeiro
@@ -145,109 +94,61 @@
                 %ul.mega-menu-menu
                   %li.mega-menu-header Interno
                   %li
-                    %a{:href => "https://jumpstartthemes.com/demo/v/3.0.0/templates/admin-1/page-profile.html"}
-                      %i.fa.fa-user.dropdown-icon
+                    %a{:href => "#"}
                       Contas à pagar
                   %li
-                    %a{:href => "https://jumpstartthemes.com/demo/v/3.0.0/templates/admin-1/page-profile.html"}
-                      %i.fa.fa-user.dropdown-icon
+                    %a{:href => "#"}
                       Contas à receber
                   %li
-                    %a{:href => "https://jumpstartthemes.com/demo/v/3.0.0/templates/admin-1/page-settings.html"}
-                      %i.fa.fa-cogs.dropdown-icon
+                    %a{:href => "#"}
                       Centro de custos
                   %li
-                    %a{:href => "https://jumpstartthemes.com/demo/v/3.0.0/templates/admin-1/page-settings.html"}
-                      %i.fa.fa-cogs.dropdown-icon
+                    %a{:href => "#"}
                       Categoria de contas
-            
-                  %li.mega-menu-header
-                    Gestão
+                %ul.mega-menu-menu
+                  %li.mega-menu-header Gestão
                   %li
-                    %a{:href => "https://jumpstartthemes.com/demo/v/3.0.0/templates/admin-1/page-sitemap.html"}
-                      %i.fa.fa-sitemap.dropdown-icon
+                    %a{:href => "#"}
+                      Notas
+                  %li
+                    %a{:href => "#"}
                       Boletos
                   %li
-                    %a{:href => "https://jumpstartthemes.com/demo/v/3.0.0/templates/admin-1/page-blank.html"}
-                      %i.fa.fa-file-o.dropdown-icon
-                      Listagem de compras
-                  %li
-                    %a{:href => "https://jumpstartthemes.com/demo/v/3.0.0/templates/admin-1/page-404.html"}
-                      %i.fa.fa-ban.dropdown-icon
-                      Categorias de compra
-                  %li
-                    %a{:href => "https://jumpstartthemes.com/demo/v/3.0.0/templates/admin-1/page-500.html"}
-                      %i.fa.fa-ban.dropdown-icon
-                      Itens de compras
-                  %li
-                    %a{:href => "https://jumpstartthemes.com/demo/v/3.0.0/templates/admin-1/page-maintenance.html", :target => "_blank"}
-                      %i.fa.fa-cogs.dropdown-icon
-                      Balance geral
-              / /.mega-menu-col
+                    %a{:href => "#"}
+                      Caixa - Entrada e saída
+                        
               .mega-menu-col
                 %ul.mega-menu-menu
                   %li.mega-menu-header Pesquisa
                   %li
-                    %a{:href => "https://jumpstartthemes.com/demo/v/3.0.0/templates/admin-1/account-login.html", :target => "_blank"}
-                      %i.fa.fa-unlock.dropdown-icon
-                      Pesquisa FPA
-                      %small
-                        %i.fa.fa-external-link.pull-right.text-secondary{:style => "position: relative; top: 6px;"}
+                    %a{:href => "#", :target => "_blank"}
+                      Pesquisa Nota
                   %li
-                    %a{:href => "https://jumpstartthemes.com/demo/v/3.0.0/templates/admin-1/account-login-social.html", :target => "_blank"}
-                      %i.fa.fa-unlock.dropdown-icon
-                      Pesquisa por produto
-                      %small
-                        %i.fa.fa-external-link.pull-right.text-secondary{:style => "position: relative; top: 6px;"}
-                  %li
-                    %a{:href => "https://jumpstartthemes.com/demo/v/3.0.0/templates/admin-1/account-signup.html", :target => "_blank"}
-                      %i.fa.fa-pencil.dropdown-icon
-                      Pesquisa por fornecedor
-                      %small
-                        %i.fa.fa-external-link.pull-right.text-secondary{:style => "position: relative; top: 6px;"}
+                    %a{:href => "#", :target => "_blank"}
+                      Pesquisa por compra
               .mega-menu-col
                 %ul.mega-menu-menu
                   %li.mega-menu-header Relatórios
                   %li
-                    %a{:href => "https://jumpstartthemes.com/demo/v/3.0.0/templates/admin-1/account-login.html", :target => "_blank"}
-                      %i.fa.fa-unlock.dropdown-icon
+                    %a{:href => "#", :target => "_blank"}
                       Geral
-                      %small
-                        %i.fa.fa-external-link.pull-right.text-secondary{:style => "position: relative; top: 6px;"}
                   %li
-                    %a{:href => "https://jumpstartthemes.com/demo/v/3.0.0/templates/admin-1/account-login-social.html", :target => "_blank"}
-                      %i.fa.fa-unlock.dropdown-icon
+                    %a{:href => "#", :target => "_blank"}
                       Por contrato & período
-                      %small
-                        %i.fa.fa-external-link.pull-right.text-secondary{:style => "position: relative; top: 6px;"}
                   %li
-                    %a{:href => "https://jumpstartthemes.com/demo/v/3.0.0/templates/admin-1/account-signup.html", :target => "_blank"}
-                      %i.fa.fa-pencil.dropdown-icon
-                      Por categoria de compras
-                      %small
-                        %i.fa.fa-external-link.pull-right.text-secondary{:style => "position: relative; top: 6px;"}
+                    %a{:href => "#", :target => "_blank"}
+                      Por centro de custo
                   %li
-                    %a{:href => "https://jumpstartthemes.com/demo/v/3.0.0/templates/admin-1/account-forgot.html", :target => "_blank"}
-                      %i.fa.fa-envelope.dropdown-icon
+                    %a{:href => "#", :target => "_blank"}
                       Por fornecedor
-                      %small
-                        %i.fa.fa-external-link.pull-right.text-secondary{:style => "position: relative; top: 6px;"}
         %li.dropdown
           %a.dropdown-toggle{"data-hover" => "dropdown", "data-toggle" => "dropdown", :href => "javascript:;"}
-            Recursos Humano
+            Recursos Humanos
             %i.mainnav-caret
 
           %ul.dropdown-menu.mega-menu-2{:role => "menu"}
             %li
               .mega-menu-col
                 %ul.mega-menu-menu
-                  %li.mega-menu-header Interno
-                  %li
-                    %a{:href => "https://jumpstartthemes.com/demo/v/3.0.0/templates/admin-1/page-profile.html"}
-                      %i.fa.fa-user.dropdown-icon
-                      Contas à pagar
-                  %li
-                    %a{:href => "https://jumpstartthemes.com/demo/v/3.0.0/templates/admin-1/page-profile.html"}
-                      %i.fa.fa-user.dropdown-icon
-                      Contas à receber
+                  %li.mega-menu-header Em construção
  

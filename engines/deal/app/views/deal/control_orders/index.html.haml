@@ -1,10 +1,10 @@
 .row
   .col-sm-12
-    %section.panel
-      %header.panel-heading
-        .title Resumo de Pedidos
-        %hr/
-      .panel-body
+    .portlet.portlet-boxed
+      .portlet-header
+        %h4.portlet-title Resumo de Pedidos
+        = link_to "Nova Compra", new_purchase_path, class: 'pull-right btn btn-success btn-sm'
+      .portlet-body
         .row
           = simple_form_for :search, url: control_orders_path, method: :get do |f|
             .col-md-2
@@ -19,8 +19,8 @@
             .col-md-2
               = f.label "Status"
               = f.input :status_id, label: false, name: 'status_id', collection: Deal::Order.statuses, prompt: 'todos', selected: params[:search].present? ? params[:search][:status_id] : 0
-            .col-md-2{style: "margin-top:32px"}
-              = f.submit "Filtrar Pedidos", name: nil, class: 'btn btn-primary '
+            .col-md-2{style: "margin-top:25px"}
+              = f.submit "Filtrar Pedidos", name: nil, class: 'btn btn-secondary btn-sm'
         %hr/
         .adv-table          
           .row
@@ -40,8 +40,8 @@
                       %td.col-md-1= order.protocol
                       %td.col-md-2= order.contract.title if order.contract.present?
                       %td= order.description
-                      %td.col-md-2= status_helper order.status
+                      %td.col-md-1= status_helper order.status
                       %td.col-md-2= order.created_at.strftime("%d/%m/%Y às %H:%M")
-                      %td.col-md-2
-                        = link_to "",   edit_control_order_path(order), class: 'btn btn-success btn-sm s7-edit'
-                        = link_to "", control_order_path(order), method: :delete, class: 'btn btn-danger btn-sm s7-trash', data: { confirm: t(:confirm_destroy)}
+                      %td.col-md-1
+                        = link_to "",   edit_control_order_path(order), class: 'btn btn-success btn-xs glyphicon glyphicon-pencil'
+                        = link_to "", control_order_path(order), method: :delete, class: 'btn btn-danger btn-xs glyphicon glyphicon-remove', data: { confirm: t(:confirm_destroy)}

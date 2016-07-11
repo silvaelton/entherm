@@ -1,0 +1,13 @@
+%header.navbar{:role => "banner"}
+.container
+  .navbar-header
+    %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
+      %span.sr-only Toggle navigation
+      %i.fa.fa-cog
+%br.xs-80
+.account-wrapper
+  .account-body
+    %h3
+      %b Gestão Entherm
+    %hr/
+    = render 'form'

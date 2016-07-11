@@ -15,17 +15,14 @@
       = f.input :buy_type, as: :select, collection: Deal::Purchase.buy_types.keys.to_a, include_blank: false
     .col-md-2
       = f.input :created_at, as: :string, input_html: { class: 'date', value: f.object.created_at.nil? ? Date.today.strftime('%d/%m/%Y') : f.object.created_at.strftime('%d/%m/%Y') }
-  %hr/
-  .row
     .col-md-3
       = f.association :contract, as: :select, prompt: 'selecione...'
-    .col-md-2
-      = f.association :quotation, as: :select, prompt: 'selecione...'
-    .col-md-3
+  %hr/
+  .row
+    .col-md-4
       = f.association :supplier, collection: Deal::Supplier.all.order(:name).map { |key| [key.name.upcase, key.id]} ,prompt: 'selecione...', hint: "#{link_to('adicionar fornecedor', new_supplier_path, remote: true)}".html_safe
     .col-md-2
       = f.input :invoice_number
-  .row
     .col-md-2
       = f.input :invoice_file, as: :file
   %hr/
@@ -43,15 +40,13 @@
   .row
     .col-md-3
       = f.association :carrier, prompt: 'própria'
-  %hr/
-  .row
-    .col-md-3
+    .col-md-4
       = f.input :seller, placeholder: "Digite o nome do vendedor"
-    .col-md-3
+    .col-md-5
       = f.input :requester, placeholder: "Digite o nome do solicitante"
   %hr/
   .row
-    .col-md-8
+    .col-md-12
       = f.input :description, placeholder: "Digite uma descrição para sua compra"
   %hr/
   .row
@@ -62,5 +57,5 @@
   %hr/
   .row
     .col-md-8
-      = f.submit "Salvar Compra", class: 'btn btn-success btn-sm'
-      = link_to "Voltar", purchases_path, class: 'btn btn-default btn-sm'
+      = f.submit "Salvar Compra", class: 'btn btn-success'
+      = link_to "Voltar", purchases_path, class: 'btn btn-default'

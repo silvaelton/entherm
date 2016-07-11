@@ -4,90 +4,21 @@
       %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
         %span.sr-only Toggle navigation
         %i.fa.fa-cog
-      %a.navbar-brand.navbar-brand-img{:href => "https://jumpstartthemes.com/demo/v/3.0.0/templates/admin-1/index.html"}
-        %img{:alt => "Entherm", :src => "./Analytics Dashboard · MVP Ready_files/logo.png"}
+      %a.navbar-brand.navbar-brand-img{:href => "dashboard.root-Path"}
+        %br/
+        %b ENTHERM GESTÃO
     / /.navbar-header
     %nav.collapse.navbar-collapse{:role => "navigation"}
-      %ul.nav.navbar-nav.navbar-left
-        %li.dropdown.navbar-notification
-          %a.dropdown-toggle{"data-toggle" => "dropdown", :href => ""}
-            %i.fa.fa-envelope.navbar-notification-icon
-          .dropdown-menu
-            .dropdown-header Messages
-            .slimScrollDiv{:style => "position: relative; overflow: hidden; width: auto; height: 225px;"}
-              .notification-list{:style => "overflow: hidden; width: auto; height: 225px;"}
-                %a.notification{:href => "https://jumpstartthemes.com/demo/v/3.0.0/templates/admin-1/page-notifications.html"}
-                  .notification-icon
-                    %img{:alt => "", :src => "./Analytics Dashboard · MVP Ready_files/avatar-3-md.jpg"}/
-                  .notification-title New Message
-                  .notification-description Praesent dictum nisl non est sagittis luctus.
-                  .notification-time 20 minutes ago
-                / / .notification
-                %a.notification{:href => "https://jumpstartthemes.com/demo/v/3.0.0/templates/admin-1/page-notifications.html"}
-                  .notification-icon
-                    %img{:alt => "", :src => "./Analytics Dashboard · MVP Ready_files/avatar-3-md.jpg"}/
-                  .notification-title New Message
-                  .notification-description Lorem ipsum dolor sit amet, consectetur adipisicing elit...
-                  .notification-time 20 minutes ago
-                / / .notification
-                %a.notification{:href => "https://jumpstartthemes.com/demo/v/3.0.0/templates/admin-1/page-notifications.html"}
-                  .notification-icon
-                    %img{:alt => "", :src => "./Analytics Dashboard · MVP Ready_files/avatar-4-md.jpg"}/
-                  .notification-title New Message
-                  .notification-description Lorem ipsum dolor sit amet, consectetur adipisicing elit...
-                  .notification-time 20 minutes ago
-                / / .notification
-                %a.notification{:href => "https://jumpstartthemes.com/demo/v/3.0.0/templates/admin-1/page-notifications.html"}
-                  .notification-icon
-                    %img{:alt => "", :src => "./Analytics Dashboard · MVP Ready_files/avatar-5-md.jpg"}/
-                  .notification-title New Message
-                  .notification-description Lorem ipsum dolor sit amet, consectetur adipisicing elit...
-                  .notification-time 20 minutes ago
-                / / .notification
-              .slimScrollBar{:style => "width: 5px; position: absolute; top: 0px; opacity: 0.4; display: block; border-radius: 7px; z-index: 99; right: 1px; background: rgb(136, 136, 136);"}
-              .slimScrollRail{:style => "width: 5px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; opacity: 0.2; z-index: 90; right: 1px; background: rgb(153, 153, 153);"}
-            / / .notification-list
-            %a.notification-link{:href => "https://jumpstartthemes.com/demo/v/3.0.0/templates/admin-1/page-notifications.html"} View All Messages
-          / / .dropdown-menu
-        %li.dropdown.navbar-notification.empty
-          %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "https://jumpstartthemes.com/demo/v/3.0.0/templates/admin-1/page-notifications.html"}
-            %i.fa.fa-warning.navbar-notification-icon
-            %span.visible-xs-inline &nbsp;&nbsp;Alerts
-          .dropdown-menu
-            .dropdown-header Alerts
-            .slimScrollDiv{:style => "position: relative; overflow: hidden; width: auto; height: 225px;"}
-              .notification-list{:style => "overflow: hidden; width: auto; height: 225px;"}
-                %h4.notification-empty-title No alerts here.
-                %p.notification-empty-text Check out what other makers are doing on Explore!
-              .slimScrollBar{:style => "width: 5px; position: absolute; top: 0px; opacity: 0.4; display: block; border-radius: 7px; z-index: 99; right: 1px; background: rgb(136, 136, 136);"}
-              .slimScrollRail{:style => "width: 5px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; opacity: 0.2; z-index: 90; right: 1px; background: rgb(153, 153, 153);"}
-            / / .notification-list
-            %a.notification-link{:href => "https://jumpstartthemes.com/demo/v/3.0.0/templates/admin-1/page-notifications.html"} View All Alerts
-          / / .dropdown-menu
       %ul.nav.navbar-nav.navbar-right
-        %li
-          %a{:href => "javascript:;"} Support
         %li.dropdown.navbar-profile
           %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "javascript:;"}
-            %img.navbar-profile-avatar{:alt => "", :src => "./Analytics Dashboard · MVP Ready_files/avatar-6-sm.jpg"}
-              %span.visible-xs-inline @peterlandt &nbsp;
+            %img.navbar-profile-avatar{:alt => "", :src => "/images/avatar-default.png"}
+              %span.visible-xs-inline= current_user.email
               %i.fa.fa-caret-down
           %ul.dropdown-menu{:role => "menu"}
             %li
               %a{:href => "https://jumpstartthemes.com/demo/v/3.0.0/templates/admin-1/page-profile.html"}
-                %i.fa.fa-user
-                \&nbsp;&nbsp;My Profile
-            %li
-              %a{:href => "https://jumpstartthemes.com/demo/v/3.0.0/templates/admin-1/page-pricing-plans.html"}
-                %i.fa.fa-dollar
-                \&nbsp;&nbsp;Plans &amp; Billing
-            %li
-              %a{:href => "https://jumpstartthemes.com/demo/v/3.0.0/templates/admin-1/page-settings.html"}
-                %i.fa.fa-cogs
-                \&nbsp;&nbsp;Settings
+                Meu perfil
             %li.divider
             %li
-              %a{:href => "https://jumpstartthemes.com/demo/v/3.0.0/templates/admin-1/account-login.html"}
-                %i.fa.fa-sign-out
-                \&nbsp;&nbsp;Logout
-  / /.container
+              = link_to "Sair", main_app.general_session_path(current_user), method: :delete

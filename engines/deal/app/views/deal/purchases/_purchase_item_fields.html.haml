@@ -5,7 +5,7 @@
       = f.label :product_title
       = f.text_field :product_title, data: {autocomplete_source: products_path}, id: 'product_title', class: 'product_title form-control', autocomplete: 'on'
     .col-md-1
-      = f.input :unit, as: :select, collection: Deal::PurchaseItem.units.keys.to_a, include_blank: false
+      = f.input :unit, as: :select, collection: Deal::PurchaseItem.units.keys.to_a, include_blank: false, label: "Un."
     .col-md-1
       = f.input :quantity, as: :string, input_html: { id: "quantity_#{f.options[:child_index]}"}
     .col-md-2

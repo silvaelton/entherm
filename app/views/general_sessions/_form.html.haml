@@ -1,0 +1,10 @@
+%form.form.account-form{:action => "#{main_app.general_sessions_path}", :method => "POST"}
+= simple_form_for @geral, url: main_app.general_sessions_path, method: :post do |f|
+  .form-group
+    = f.input :email, placeholder: "Digite seu e-mail", label: false
+  .form-group
+    = f.input :password, label: false, placeholder: "Digite sua senha"
+  %hr/
+  .form-group
+    %button.btn.btn-secondary.btn-block.btn-lg{:tabindex => "4", :type => "submit"}
+      %b Realizar acesso

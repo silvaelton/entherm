@@ -23,7 +23,7 @@
                       %td= company.cnpj
                       %td= "#{company.state.acronym}" if company.state.present?
                       %td= company.cep
-                      %td.col-md-2
-                        = link_to "", edit_company_path(company), class: 'btn btn-primary btn-sm glyphicon glyphicon-pencil', title: "Editar"
-                        = link_to "", company_path(company), method: :delete, data: { confirm: t(:confirm_destroy)}, class: 'btn btn-danger btn-sm glyphicon glyphicon-remove', title: "Remover"
+                      %td.col-md-1
+                        = link_to "", edit_company_path(company), class: 'btn btn-success btn-xs glyphicon glyphicon-pencil', title: "Editar"
+                        = link_to "", company_path(company), method: :delete, data: { confirm: t(:confirm_destroy)}, class: 'btn btn-danger btn-xs glyphicon glyphicon-remove', title: "Remover"
                  

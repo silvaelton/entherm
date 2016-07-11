@@ -1,10 +1,10 @@
 .row
   .col-sm-12
-    %section.panel
-      %header.panel-heading
-        %b Listagem de Contratos
+    .portlet.portlet-boxed
+      .portlet-header
+        %h4.portlet-title Listagem de Contratos
         = link_to "novo contrato", new_contract_path, class: 'btn btn-success btn-xs pull-right '
-      .panel-body
+      .portlet-body
         .adv-table
           .row
             .col-md-12
@@ -21,7 +21,7 @@
                       %td= contract.title
                       %td= contract.company.name if contract.company.present?
                       %td= contract.status ? 'ativo' : 'inativo'
-                      %td.col-md-2
-                        = link_to "", edit_contract_path(contract), class: 'btn btn-primary btn-sm icon-edit', title: "Editar"
-                        = link_to "", contract_path(contract), method: :delete, data: { confirm: t(:confirm_destroy)}, class: 'btn btn-danger btn-sm icon-remove', title: "Remover"
+                      %td.col-md-1
+                        = link_to "", edit_contract_path(contract), class: 'btn btn-success btn-xs glyphicon glyphicon-pencil', title: "Editar"
+                        = link_to "", contract_path(contract), method: :delete, data: { confirm: t(:confirm_destroy)}, class: 'btn btn-danger btn-xs glyphicon glyphicon-remove', title: "Remover"
                  

@@ -6,6 +6,7 @@ Deal::Engine.routes.draw do
   resources :control_orders do 
     resources :order_comments
   end
+  
   resources :products
   
   resources :purchases do 

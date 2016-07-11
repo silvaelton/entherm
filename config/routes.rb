@@ -6,4 +6,7 @@ Rails.application.routes.draw do
   mount Commercial::Engine  => '/comercial',    as: 'commercial',   module: 'commercial'
   mount Deal::Engine        => '/compras',      as: 'deal',         module: 'deal'
 
+  resources :general_sessions, path: 'geral'
+  resources :requester_sessions, path: 'solicitante'
+
 end
