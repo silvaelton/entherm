@@ -20,11 +20,11 @@
                     %th Status
                     %th Ações
                 %tbody
-                  - @supplier_categories.each do |supplier|
+                  - @supplier_categories.order(:title).each do |supplier|
                     %tr
                       %td= supplier.title.upcase
                       %td.col-md-2= supplier.status ? 'ativo' : 'inativo'
                       %td.col-md-2
-                        = link_to "", edit_supplier_category_path(supplier), class: 'btn btn-success btn-sm s7-edit', title: "Editar"
-                        = link_to "", supplier_category_path(supplier), method: :delete, data: { confirm: t(:confirm_destroy)}, class: 'icon-remove btn-sm btn btn-danger s7-trash', title: 'Remover'
+                        = link_to "", edit_supplier_category_path(supplier), class: 'btn btn-success btn-xs glyphicon glyphicon-pencil', title: "Editar"
+                        = link_to "", supplier_category_path(supplier), method: :delete, data: { confirm: t(:confirm_destroy)}, class: 'icon-remove btn-xs btn btn-danger glyphicon glyphicon-remove', title: 'Remover'
                  

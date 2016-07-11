@@ -1,15 +1,13 @@
 .row
   .col-sm-12
-    %section.panel
-      %header.panel-heading
-        .title
-          Listagem de Fornecedores
-          %span.pull-right
-            = link_to "Categorias", supplier_categories_path
-            |
-            = link_to "Novo Fornecedor", new_supplier_path
-        %hr/
-      .panel-body
+    .portlet.portlet-boxed
+      .portlet-header
+        %h4.portlet-title Listagem de Fornecedores
+        %span.pull-right
+          = link_to "Categorias", supplier_categories_path, class: 'btn btn-secondary btn-xs'
+          |
+          = link_to "Novo Fornecedor", new_supplier_path, class: 'btn btn-success btn-xs'
+      .portlet-body
         .adv-table
           .row
             .col-md-12
@@ -32,7 +30,7 @@
                       %td= supplier.contact_name
                       %td= "#{supplier.contact_telephone} / #{supplier.contact_telephone_optional}"
                       %td= "#{supplier.contact_celphone} / #{supplier.contact_celphone_optional}"
-                      %td.col-md-2
-                        = link_to "", edit_supplier_path(supplier), class: 'btn btn-success btn-sm icon s7-edit', title: 'editar'
-                        = link_to "", supplier_path(supplier), method: :delete, data: { confirm: t(:confirm_destroy)}, class: 'btn btn-danger btn-sm s7-trash', title: 'remover'
+                      %td.col-md-1
+                        = link_to "", edit_supplier_path(supplier), class: 'btn btn-success btn-xs glyphicon glyphicon-pencil', title: 'editar'
+                        = link_to "", supplier_path(supplier), method: :delete, data: { confirm: t(:confirm_destroy)}, class: 'btn btn-danger btn-xs glyphicon glyphicon-remove', title: 'remover'
                  
