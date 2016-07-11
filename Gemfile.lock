@@ -24,6 +24,12 @@ PATH
       rails (~> 4.2.3)
 
 PATH
+  remote: engines/finance
+  specs:
+    finance (0.0.1)
+      rails (~> 4.2.3)
+
+PATH
   remote: engines/information
   specs:
     information (0.0.1)
@@ -368,6 +374,7 @@ DEPENDENCIES
   dashboard!
   deal!
   email_validator
+  finance!
   fog
   guard-livereload
   guard-rails
@@ -389,3 +396,9 @@ DEPENDENCIES
   validates_cpf_cnpj
   validates_timeliness
   web-console (~> 2.0)
+
+RUBY VERSION
+   ruby 2.2.1p85
+
+BUNDLED WITH
+   1.12.5

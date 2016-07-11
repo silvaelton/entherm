@@ -53,6 +53,16 @@
                     %a{:href => "#"}
                       Itens de compras
                   %li
+                    %a{:href => "#{deal.patrimonies_path}"}
+                      Patrimônios
+                  %li
+                    %a{:href => "#{deal.patrimony_moviments_path}"}
+                      Movimentação de patrimônios
+                  %li
+                    %a{:href => "#{deal.inventories_path}"}
+                      Estoque
+
+                  %li
                     %a{:href => "#"}
                       Balance geral
               / /.mega-menu-col
@@ -60,11 +70,8 @@
                 %ul.mega-menu-menu
                   %li.mega-menu-header Pesquisa
                   %li
-                    %a{:href => "#", :target => "_blank"}
-                      Pesquisa FPA
-                  %li
-                    %a{:href => "#"}
-                      Pesquisa por produto
+                    %a{:href => "#{deal.searches_path}"}
+                      Pesquisa FPA / Produto
                   %li
                     %a{:href => "#{deal.suppliers_path}"}
                       Fornecedores
