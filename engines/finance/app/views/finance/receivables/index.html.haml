@@ -48,6 +48,6 @@
               %footer
                 %tr 
                   %th{colspan: 4} Total
-                  %th= number_to_currency @receivables.sum(:value)
+                  %th= number_to_currency @receivables.sum(:value) if @receivables.present?
                   %th
                   %th
