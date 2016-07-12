@@ -5,7 +5,9 @@ pt-BR:
     access: "Acessos"
     purchase: "Compras"
     personal_departament: "Departamento Pessoal"
+    general_profiles: "Meu perfil"
   controllers:
+    general_profiles: "Meu perfil"
     orders: "Pedidos"
     suppliers: "Fornecedores"
     users: "Usuários"
@@ -13,6 +15,8 @@ pt-BR:
     alerts: "Notificações"
     staffs: "Funcionários"
   actions:
+    general_profiles:
+      edit: "Editar"
     staffs:
       index: "Listagem"
       new: "Novo Funcionário"

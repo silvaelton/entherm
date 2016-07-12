@@ -11,34 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151126120449) do
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
-  create_table "access_alerts", force: :cascade do |t|
-    t.string   "title"
-    t.text     "content"
-    t.integer  "priority",   default: 0
-    t.boolean  "status",     default: false
-    t.date     "expiration"
-    t.integer  "color",      default: 0
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
-    t.integer  "user_id"
-  end
-
-  add_index "access_alerts", ["user_id"], name: "index_access_alerts_on_user_id", using: :btree
-
-  create_table "access_user_contracts", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "contract_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
-  add_index "access_user_contracts", ["contract_id"], name: "index_access_user_contracts_on_contract_id", using: :btree
-  add_index "access_user_contracts", ["user_id"], name: "index_access_user_contracts_on_user_id", using: :btree
+ActiveRecord::Schema.define(version: 20160711145740) do
 
   create_table "commercial_companies", force: :cascade do |t|
     t.string   "name"
@@ -54,8 +27,8 @@ ActiveRecord::Schema.define(version: 20151126120449) do
     t.datetime "updated_at",         null: false
   end
 
-  add_index "commercial_companies", ["city_id"], name: "index_commercial_companies_on_city_id", using: :btree
-  add_index "commercial_companies", ["state_id"], name: "index_commercial_companies_on_state_id", using: :btree
+  add_index "commercial_companies", ["city_id"], name: "index_commercial_companies_on_city_id"
+  add_index "commercial_companies", ["state_id"], name: "index_commercial_companies_on_state_id"
 
   create_table "commercial_contracts", force: :cascade do |t|
     t.string   "title"
@@ -65,23 +38,25 @@ ActiveRecord::Schema.define(version: 20151126120449) do
     t.datetime "updated_at",                null: false
   end
 
-  add_index "commercial_contracts", ["company_id"], name: "index_commercial_contracts_on_company_id", using: :btree
+  add_index "commercial_contracts", ["company_id"], name: "index_commercial_contracts_on_company_id"
 
   create_table "deal_inventories", force: :cascade do |t|
     t.integer  "product_id"
-    t.string   "unit"
     t.integer  "quantity"
+    t.string   "unit"
     t.text     "observation"
     t.text     "location"
     t.string   "image_path"
-    t.float    "estimed_value"
     t.string   "state"
     t.string   "supplier"
+    t.float    "estimed_value"
+    t.integer  "purchase_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
   end
 
-  add_index "deal_inventories", ["product_id"], name: "index_deal_inventories_on_product_id", using: :btree
+  add_index "deal_inventories", ["product_id"], name: "index_deal_inventories_on_product_id"
+  add_index "deal_inventories", ["purchase_id"], name: "index_deal_inventories_on_purchase_id"
 
   create_table "deal_inventory_logs", force: :cascade do |t|
     t.integer  "log_type"
@@ -95,9 +70,9 @@ ActiveRecord::Schema.define(version: 20151126120449) do
     t.integer  "contract_id"
   end
 
-  add_index "deal_inventory_logs", ["contract_id"], name: "index_deal_inventory_logs_on_contract_id", using: :btree
-  add_index "deal_inventory_logs", ["inventory_id"], name: "index_deal_inventory_logs_on_inventory_id", using: :btree
-  add_index "deal_inventory_logs", ["user_id"], name: "index_deal_inventory_logs_on_user_id", using: :btree
+  add_index "deal_inventory_logs", ["contract_id"], name: "index_deal_inventory_logs_on_contract_id"
+  add_index "deal_inventory_logs", ["inventory_id"], name: "index_deal_inventory_logs_on_inventory_id"
+  add_index "deal_inventory_logs", ["user_id"], name: "index_deal_inventory_logs_on_user_id"
 
   create_table "deal_order_comments", force: :cascade do |t|
     t.integer  "user_id"
@@ -107,8 +82,8 @@ ActiveRecord::Schema.define(version: 20151126120449) do
     t.integer  "order_id"
   end
 
-  add_index "deal_order_comments", ["order_id"], name: "index_deal_order_comments_on_order_id", using: :btree
-  add_index "deal_order_comments", ["user_id"], name: "index_deal_order_comments_on_user_id", using: :btree
+  add_index "deal_order_comments", ["order_id"], name: "index_deal_order_comments_on_order_id"
+  add_index "deal_order_comments", ["user_id"], name: "index_deal_order_comments_on_user_id"
 
   create_table "deal_order_items", force: :cascade do |t|
     t.integer  "order_id"
@@ -117,7 +92,6 @@ ActiveRecord::Schema.define(version: 20151126120449) do
     t.integer  "quantity"
     t.string   "goal"
     t.text     "observation"
-    t.string   "image_path"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.string   "machine_id"
@@ -126,8 +100,8 @@ ActiveRecord::Schema.define(version: 20151126120449) do
     t.float    "contract_value"
   end
 
-  add_index "deal_order_items", ["order_id"], name: "index_deal_order_items_on_order_id", using: :btree
-  add_index "deal_order_items", ["product_id"], name: "index_deal_order_items_on_product_id", using: :btree
+  add_index "deal_order_items", ["order_id"], name: "index_deal_order_items_on_order_id"
+  add_index "deal_order_items", ["product_id"], name: "index_deal_order_items_on_product_id"
 
   create_table "deal_orders", force: :cascade do |t|
     t.integer  "user_id"
@@ -140,8 +114,8 @@ ActiveRecord::Schema.define(version: 20151126120449) do
     t.string   "pdf"
   end
 
-  add_index "deal_orders", ["contract_id"], name: "index_deal_orders_on_contract_id", using: :btree
-  add_index "deal_orders", ["user_id"], name: "index_deal_orders_on_user_id", using: :btree
+  add_index "deal_orders", ["contract_id"], name: "index_deal_orders_on_contract_id"
+  add_index "deal_orders", ["user_id"], name: "index_deal_orders_on_user_id"
 
   create_table "deal_patrimonies", force: :cascade do |t|
     t.string   "title"
@@ -164,13 +138,13 @@ ActiveRecord::Schema.define(version: 20151126120449) do
     t.date     "buy_date"
   end
 
-  add_index "deal_patrimonies", ["contract_id"], name: "index_deal_patrimonies_on_contract_id", using: :btree
+  add_index "deal_patrimonies", ["contract_id"], name: "index_deal_patrimonies_on_contract_id"
 
   create_table "deal_patrimony_moviments", force: :cascade do |t|
     t.integer  "origin_contract_id"
     t.integer  "current_contract_id"
     t.string   "responsible"
-    t.integer  "items_id",                         array: true
+    t.integer  "items_id"
     t.integer  "moviment_type"
     t.integer  "user_id"
     t.text     "observation"
@@ -178,9 +152,9 @@ ActiveRecord::Schema.define(version: 20151126120449) do
     t.datetime "updated_at",          null: false
   end
 
-  add_index "deal_patrimony_moviments", ["current_contract_id"], name: "index_deal_patrimony_moviments_on_current_contract_id", using: :btree
-  add_index "deal_patrimony_moviments", ["origin_contract_id"], name: "index_deal_patrimony_moviments_on_origin_contract_id", using: :btree
-  add_index "deal_patrimony_moviments", ["user_id"], name: "index_deal_patrimony_moviments_on_user_id", using: :btree
+  add_index "deal_patrimony_moviments", ["current_contract_id"], name: "index_deal_patrimony_moviments_on_current_contract_id"
+  add_index "deal_patrimony_moviments", ["origin_contract_id"], name: "index_deal_patrimony_moviments_on_origin_contract_id"
+  add_index "deal_patrimony_moviments", ["user_id"], name: "index_deal_patrimony_moviments_on_user_id"
 
   create_table "deal_products", force: :cascade do |t|
     t.string   "title"
@@ -204,8 +178,8 @@ ActiveRecord::Schema.define(version: 20151126120449) do
     t.datetime "updated_at",                   null: false
   end
 
-  add_index "deal_purchase_items", ["product_id"], name: "index_deal_purchase_items_on_product_id", using: :btree
-  add_index "deal_purchase_items", ["purchase_id"], name: "index_deal_purchase_items_on_purchase_id", using: :btree
+  add_index "deal_purchase_items", ["product_id"], name: "index_deal_purchase_items_on_product_id"
+  add_index "deal_purchase_items", ["purchase_id"], name: "index_deal_purchase_items_on_purchase_id"
 
   create_table "deal_purchases", force: :cascade do |t|
     t.integer  "quotation_id"
@@ -232,11 +206,11 @@ ActiveRecord::Schema.define(version: 20151126120449) do
     t.string   "icms"
   end
 
-  add_index "deal_purchases", ["carrier_id"], name: "index_deal_purchases_on_carrier_id", using: :btree
-  add_index "deal_purchases", ["contract_id"], name: "index_deal_purchases_on_contract_id", using: :btree
-  add_index "deal_purchases", ["order_id"], name: "index_deal_purchases_on_order_id", using: :btree
-  add_index "deal_purchases", ["quotation_id"], name: "index_deal_purchases_on_quotation_id", using: :btree
-  add_index "deal_purchases", ["supplier_id"], name: "index_deal_purchases_on_supplier_id", using: :btree
+  add_index "deal_purchases", ["carrier_id"], name: "index_deal_purchases_on_carrier_id"
+  add_index "deal_purchases", ["contract_id"], name: "index_deal_purchases_on_contract_id"
+  add_index "deal_purchases", ["order_id"], name: "index_deal_purchases_on_order_id"
+  add_index "deal_purchases", ["quotation_id"], name: "index_deal_purchases_on_quotation_id"
+  add_index "deal_purchases", ["supplier_id"], name: "index_deal_purchases_on_supplier_id"
 
   create_table "deal_quotations", force: :cascade do |t|
     t.string   "description"
@@ -247,8 +221,8 @@ ActiveRecord::Schema.define(version: 20151126120449) do
     t.datetime "updated_at",              null: false
   end
 
-  add_index "deal_quotations", ["contract_id"], name: "index_deal_quotations_on_contract_id", using: :btree
-  add_index "deal_quotations", ["order_id"], name: "index_deal_quotations_on_order_id", using: :btree
+  add_index "deal_quotations", ["contract_id"], name: "index_deal_quotations_on_contract_id"
+  add_index "deal_quotations", ["order_id"], name: "index_deal_quotations_on_order_id"
 
   create_table "deal_supplier_categories", force: :cascade do |t|
     t.string   "title"
@@ -277,9 +251,46 @@ ActiveRecord::Schema.define(version: 20151126120449) do
     t.datetime "updated_at",                 null: false
   end
 
-  add_index "deal_suppliers", ["city_id"], name: "index_deal_suppliers_on_city_id", using: :btree
-  add_index "deal_suppliers", ["state_id"], name: "index_deal_suppliers_on_state_id", using: :btree
-  add_index "deal_suppliers", ["supplier_category_id"], name: "index_deal_suppliers_on_supplier_category_id", using: :btree
+  add_index "deal_suppliers", ["city_id"], name: "index_deal_suppliers_on_city_id"
+  add_index "deal_suppliers", ["state_id"], name: "index_deal_suppliers_on_state_id"
+  add_index "deal_suppliers", ["supplier_category_id"], name: "index_deal_suppliers_on_supplier_category_id"
+
+  create_table "finance_bill_categories", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "finance_billets", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "finance_cost_centers", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "finance_notes", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "finance_payables", force: :cascade do |t|
+    t.integer  "contract_id"
+    t.integer  "bill_category_id"
+    t.integer  "cost_center_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "finance_payables", ["bill_category_id"], name: "index_finance_payables_on_bill_category_id"
+  add_index "finance_payables", ["contract_id"], name: "index_finance_payables_on_contract_id"
+  add_index "finance_payables", ["cost_center_id"], name: "index_finance_payables_on_cost_center_id"
+
+  create_table "finance_receivables", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "information_cities", force: :cascade do |t|
     t.string   "name"
@@ -289,7 +300,7 @@ ActiveRecord::Schema.define(version: 20151126120449) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "information_cities", ["state_id"], name: "index_information_cities_on_state_id", using: :btree
+  add_index "information_cities", ["state_id"], name: "index_information_cities_on_state_id"
 
   create_table "information_states", force: :cascade do |t|
     t.string   "name"
@@ -297,147 +308,6 @@ ActiveRecord::Schema.define(version: 20151126120449) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
-  create_table "personal_departament_annotations", force: :cascade do |t|
-    t.integer  "staff_id"
-    t.string   "title"
-    t.text     "description"
-    t.date     "current_date"
-    t.string   "attachment_path"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-  end
-
-  add_index "personal_departament_annotations", ["staff_id"], name: "index_personal_departament_annotations_on_staff_id", using: :btree
-
-  create_table "personal_departament_attachments", force: :cascade do |t|
-    t.integer  "staff_id"
-    t.string   "title"
-    t.string   "description"
-    t.string   "file_path"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
-  add_index "personal_departament_attachments", ["staff_id"], name: "index_personal_departament_attachments_on_staff_id", using: :btree
-
-  create_table "personal_departament_dependents", force: :cascade do |t|
-    t.integer  "staff_id"
-    t.string   "name"
-    t.string   "cpf"
-    t.date     "born"
-    t.boolean  "special_condition_flag", default: false
-    t.integer  "kinship",                default: 0
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
-  end
-
-  add_index "personal_departament_dependents", ["staff_id"], name: "index_personal_departament_dependents_on_staff_id", using: :btree
-
-  create_table "personal_departament_jobs", force: :cascade do |t|
-    t.string   "title"
-    t.boolean  "status",     default: true
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
-  end
-
-  create_table "personal_departament_sectors", force: :cascade do |t|
-    t.string   "title"
-    t.string   "description"
-    t.integer  "contract_id"
-    t.boolean  "status",      default: true
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
-  end
-
-  add_index "personal_departament_sectors", ["contract_id"], name: "index_personal_departament_sectors_on_contract_id", using: :btree
-
-  create_table "personal_departament_staffs", force: :cascade do |t|
-    t.integer  "contract_id"
-    t.integer  "sector_id"
-    t.integer  "job_id"
-    t.text     "observation"
-    t.string   "name"
-    t.string   "code"
-    t.string   "rg"
-    t.string   "cpf"
-    t.string   "rg_org"
-    t.date     "rg_date"
-    t.string   "cnh"
-    t.string   "cnh_category"
-    t.string   "cnh_uf"
-    t.string   "ctps"
-    t.string   "ctps_serie"
-    t.string   "pis"
-    t.string   "voter_registration"
-    t.string   "voter_zone"
-    t.string   "voter_session"
-    t.string   "reservist"
-    t.string   "reservist_serial"
-    t.string   "reservist_uf"
-    t.date     "reservist_date"
-    t.date     "born"
-    t.string   "bank"
-    t.string   "bank_agency"
-    t.string   "bank_account"
-    t.string   "address"
-    t.string   "burgh"
-    t.integer  "city_id"
-    t.integer  "state_id"
-    t.string   "cep"
-    t.string   "telephone"
-    t.string   "telephone_optional"
-    t.string   "celphone"
-    t.string   "email"
-    t.string   "name_father"
-    t.string   "name_mother"
-    t.integer  "gender",                        default: 0
-    t.string   "naturality"
-    t.integer  "civil_state",                   default: 0
-    t.string   "spouse_name"
-    t.string   "spouse_cpf"
-    t.string   "education"
-    t.boolean  "special_condition_flag",        default: false
-    t.string   "special_condition"
-    t.string   "drt"
-    t.string   "registry"
-    t.string   "number_book"
-    t.string   "number_flet"
-    t.date     "admission"
-    t.float    "salary",                        default: 0.0
-    t.float    "transportation_voucher",        default: 0.0
-    t.string   "transportation_line"
-    t.string   "transportation_company"
-    t.string   "transportation_observation"
-    t.time     "work_start",                    default: '2000-01-01 08:00:00'
-    t.time     "work_end",                      default: '2000-01-01 08:00:00'
-    t.string   "height"
-    t.string   "weight"
-    t.string   "blood"
-    t.text     "medications"
-    t.text     "diseases"
-    t.text     "allergies"
-    t.string   "tshirt_size"
-    t.string   "pants_size"
-    t.string   "skirt_size"
-    t.string   "shoe_size"
-    t.string   "badge_name"
-    t.string   "badge_picture"
-    t.string   "picture"
-    t.integer  "situation",                     default: 0
-    t.date     "experience_start"
-    t.date     "experience_end"
-    t.integer  "staff_performance",             default: 0
-    t.text     "staff_performance_observation"
-    t.datetime "created_at",                                                    null: false
-    t.datetime "updated_at",                                                    null: false
-  end
-
-  add_index "personal_departament_staffs", ["city_id"], name: "index_personal_departament_staffs_on_city_id", using: :btree
-  add_index "personal_departament_staffs", ["contract_id"], name: "index_personal_departament_staffs_on_contract_id", using: :btree
-  add_index "personal_departament_staffs", ["job_id"], name: "index_personal_departament_staffs_on_job_id", using: :btree
-  add_index "personal_departament_staffs", ["sector_id"], name: "index_personal_departament_staffs_on_sector_id", using: :btree
-  add_index "personal_departament_staffs", ["state_id"], name: "index_personal_departament_staffs_on_state_id", using: :btree
 
   create_table "privileges", force: :cascade do |t|
     t.string   "name"
@@ -449,7 +319,7 @@ ActiveRecord::Schema.define(version: 20151126120449) do
     t.datetime "updated_at",                 null: false
   end
 
-  add_index "privileges", ["code"], name: "index_privileges_on_code", unique: true, using: :btree
+  add_index "privileges", ["code"], name: "index_privileges_on_code", unique: true
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -468,10 +338,10 @@ ActiveRecord::Schema.define(version: 20151126120449) do
     t.boolean  "status"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.integer  "privilege_id",                                     array: true
+    t.integer  "privilege_id"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
 end

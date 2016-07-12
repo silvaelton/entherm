@@ -1,0 +1,25 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  port: 5432
+
+development:
+  <<: *default
+  database: entherm_development
+  username: postgres
+  password: 123456879
+  host: localhost
+
+production:
+  <<: *default
+  database: entherm_production
+  username: postgres
+  password: 12345678
+  host: localhost
+
+test:
+  <<: *default
+  database: entherm_test
+  username: postgres
+  password: 123456789
+  host: localhost

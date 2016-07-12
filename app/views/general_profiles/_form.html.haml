@@ -1,0 +1,14 @@
+= simple_form_for @user, url: general_profile_path(current_user) do |f|
+  .row
+    .col-md-4
+      = f.input :email
+    .col-md-4
+      = f.input :encrypted_password, label: "Nova senha"
+      = f.hint "Informe somente se desejar trocar a senha atual"
+    .col-md-4
+      = f.input :current_password
+    .col-md-4
+      = f.input :edit_form, as: :hidden, input_html: { value: true}
+  .row  
+    .col-md-12
+      = f.submit "Atualizar usuário", class: 'btn btn-secondary '
