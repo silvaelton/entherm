@@ -1,0 +1,10 @@
+= simple_form_for @category do |f|
+  .row
+    .col-md-12
+      = f.input :name, label: "Nome"
+  .row
+    .col-md-12
+      = f.input :description, label: "Descrição"
+  .row
+    .col-md-12
+      = f.submit "Adicionar categoria", class: 'btn btn-success btn-sm'

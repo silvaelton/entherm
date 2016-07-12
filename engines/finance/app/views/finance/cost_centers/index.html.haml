@@ -1,0 +1,23 @@
+.row
+  .col-sm-12
+    .portlet.portlet-boxed
+      .portlet-header
+        %h4.portlet-title Centro de custo
+        = link_to "+ Adicionar centro de custo", new_cost_center_path, class: 'pull-right btn btn-sm btn-secondary'
+      .portlet-body
+        %table.table.table-striped.table-bordered.table-hover
+          %thead
+            %tr
+              %th Nome
+              %th Descrição
+              %th Contrato
+              %th Ações
+          %tbody
+            - @costs.each do |cost|
+              %tr
+                %td= cost.name
+                %td= cost.description
+                %td= cost.contract.present? ? cost.contract.title :  "Nenhum"
+                %td.col-md-1
+                  = link_to "", edit_cost_center_path(cost), class: 'btn btn-xs glyphicon glyphicon-pencil btn-success'
+                  = link_to "", cost_center_path(cost), method: :delete, data: { confirm: t(:confirm_destroy)}, class: 'btn btn-xs btn-danger glyphicon glyphicon-remove'

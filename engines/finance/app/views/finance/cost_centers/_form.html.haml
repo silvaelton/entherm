@@ -1,0 +1,13 @@
+= simple_form_for @cost do |f|
+  .row
+    .col-md-4
+      = f.association :contract, label: "Contrato", include_blank: "Nenhum"
+  .row
+    .col-md-12
+      = f.input :name, label: "Nome"
+  .row
+    .col-md-12
+      = f.input :description, label: "Descrição"
+  .row
+    .col-md-12
+      = f.submit "Adicionar centro de custo", class: 'btn btn-success btn-sm'

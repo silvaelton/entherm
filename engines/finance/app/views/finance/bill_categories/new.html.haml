@@ -1,0 +1,8 @@
+.row
+  .col-sm-12
+    .portlet.portlet-boxed
+      .portlet-header
+        %h4.portlet-title Nova categoria
+        = link_to "Voltar para listagem", bill_categories_path, class: 'pull-right btn btn-sm btn-secondary'
+      .portlet-body
+        = render 'form'

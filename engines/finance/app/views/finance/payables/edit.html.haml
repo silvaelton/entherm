@@ -1,0 +1,8 @@
+.row
+  .col-sm-12
+    .portlet.portlet-boxed
+      .portlet-header
+        %h4.portlet-title Editar conta à pagar
+        = link_to "Voltar para listagem", payables_path, class: 'pull-right btn btn-sm btn-secondary'
+      .portlet-body
+        = render 'form'

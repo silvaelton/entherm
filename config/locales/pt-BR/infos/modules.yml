@@ -6,6 +6,7 @@ pt-BR:
     purchase: "Compras"
     personal_departament: "Departamento Pessoal"
     general_profiles: "Meu perfil"
+    finance: "Financeiro"
   controllers:
     general_profiles: "Meu perfil"
     orders: "Pedidos"
@@ -15,6 +16,8 @@ pt-BR:
     alerts: "Notificações"
     staffs: "Funcionários"
   actions:
+    finance: 
+      center_cost: "Centro de custo"
     general_profiles:
       edit: "Editar"
     staffs:

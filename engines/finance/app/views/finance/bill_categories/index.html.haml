@@ -1,0 +1,21 @@
+.row
+  .col-sm-12
+    .portlet.portlet-boxed
+      .portlet-header
+        %h4.portlet-title Categorias de contas
+        = link_to "+ Adicionar categoria", new_bill_category_path, class: 'pull-right btn btn-sm btn-secondary'
+      .portlet-body
+        %table.table.table-striped.table-bordered.table-hover
+          %thead
+            %tr
+              %th Nome
+              %th Descrição
+              %th Ações
+          %tbody
+            - @categories.each do |category|
+              %tr
+                %td= category.name
+                %td= category.description
+                %td.col-md-1
+                  = link_to "", edit_bill_category_path(category), class: 'btn btn-xs glyphicon glyphicon-pencil btn-success'
+                  = link_to "", bill_category_path(category), method: :delete, data: { confirm: t(:confirm_destroy)}, class: 'btn btn-xs btn-danger glyphicon glyphicon-remove'

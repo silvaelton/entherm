@@ -1,0 +1,53 @@
+.row
+  .col-sm-12
+    .portlet.portlet-boxed
+      .portlet-header
+        %h4.portlet-title Contas à receber
+        = link_to "+ Adicionar conta à receber", new_receivable_path, class: 'pull-right btn btn-sm btn-success'
+      .portlet-body
+        .row
+          = simple_form_for url_for, method: :get do |f|
+            .col-md-3
+              = f.input :cost_center, label: "Centro de custo", as: :select, collection: Finance::CostCenter.all.order(:name), include_blank: "Todos"
+            .col-md-3
+              = f.input :start, label: "Início", as: :string, input_html: {class: 'date'}
+            .col-md-3
+              = f.input :end, label: "Fim", as: :string, input_html: {class: 'date'}
+            .col-md-3
+              = f.submit "Filtar listagem", name: nil, class: 'btn btn-secondary btn-sm filter-button'
+        .row
+          .col-md-12
+            %table.table.table-striped.table-bordered.table-hover
+              %thead
+                %tr
+                  %th Centro
+                  %th Nome
+                  %th Contrato
+                  %th Vencimento
+                  %th Valor
+                  %th Situação
+                  %th Ações
+              %tbody
+                - @receivables.each do |rec|
+                  %tr
+                    %td= rec.cost_center.name if rec.cost_center.present?
+                    %td= rec.name
+                    %td= rec.contract.name if rec.contract.present?
+                    %td= rec.receivable_date.strftime("%d/%m/%Y") if rec.receivable_date.present?
+                    %td= number_to_currency rec.value
+                    %td
+                      - if rec.status
+                        %span.label.label-success
+                          Pago 
+                      - else
+                        %span.label.label-danger
+                          Não pago
+                    %td.col-md-1
+                      = link_to "", edit_receivable_path(rec), class: 'btn btn-xs glyphicon glyphicon-pencil btn-success'
+                      = link_to "", receivable_path(rec), method: :delete, data: { confirm: t(:confirm_destroy)}, class: 'btn btn-xs btn-danger glyphicon glyphicon-remove'
+              %footer
+                %tr 
+                  %th{colspan: 4} Total
+                  %th= number_to_currency @receivables.sum(:value)
+                  %th
+                  %th

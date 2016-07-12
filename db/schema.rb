@@ -256,8 +256,10 @@ ActiveRecord::Schema.define(version: 20160711145740) do
   add_index "deal_suppliers", ["supplier_category_id"], name: "index_deal_suppliers_on_supplier_category_id"
 
   create_table "finance_bill_categories", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "name"
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "finance_billets", force: :cascade do |t|
@@ -266,9 +268,14 @@ ActiveRecord::Schema.define(version: 20160711145740) do
   end
 
   create_table "finance_cost_centers", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "contract_id"
+    t.string   "name"
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
+
+  add_index "finance_cost_centers", ["contract_id"], name: "index_finance_cost_centers_on_contract_id"
 
   create_table "finance_notes", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -279,18 +286,39 @@ ActiveRecord::Schema.define(version: 20160711145740) do
     t.integer  "contract_id"
     t.integer  "bill_category_id"
     t.integer  "cost_center_id"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.string   "name"
+    t.text     "description"
+    t.text     "observation"
+    t.integer  "type_payable",     default: 0
+    t.integer  "purchase_id"
+    t.date     "date_payable"
+    t.boolean  "status",           default: false
+    t.string   "value",            default: "0"
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
   end
 
   add_index "finance_payables", ["bill_category_id"], name: "index_finance_payables_on_bill_category_id"
   add_index "finance_payables", ["contract_id"], name: "index_finance_payables_on_contract_id"
   add_index "finance_payables", ["cost_center_id"], name: "index_finance_payables_on_cost_center_id"
+  add_index "finance_payables", ["purchase_id"], name: "index_finance_payables_on_purchase_id"
 
   create_table "finance_receivables", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "contract_id"
+    t.integer  "cost_center_id"
+    t.integer  "bill_category_id"
+    t.date     "receivable_date"
+    t.boolean  "status",           default: false
+    t.string   "name"
+    t.text     "description"
+    t.string   "value",            default: "0"
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
   end
+
+  add_index "finance_receivables", ["bill_category_id"], name: "index_finance_receivables_on_bill_category_id"
+  add_index "finance_receivables", ["contract_id"], name: "index_finance_receivables_on_contract_id"
+  add_index "finance_receivables", ["cost_center_id"], name: "index_finance_receivables_on_cost_center_id"
 
   create_table "information_cities", force: :cascade do |t|
     t.string   "name"

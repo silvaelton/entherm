@@ -1,0 +1,53 @@
+.row
+  .col-sm-12
+    .portlet.portlet-boxed
+      .portlet-header
+        %h4.portlet-title Contas à pagar
+        = link_to "+ Adicionar conta à pagar", new_payable_path, class: 'pull-right btn btn-sm btn-danger'
+      .portlet-body
+        .row
+          = simple_form_for url_for, method: :get do |f|
+            .col-md-3
+              = f.input :cost_center, label: "Centro de custo", as: :select, collection: Finance::CostCenter.all.order(:name), include_blank: "Todos"
+            .col-md-3
+              = f.input :start, label: "Início", as: :string, input_html: {class: 'date'}
+            .col-md-3
+              = f.input :end, label: "Fim", as: :string, input_html: {class: 'date'}
+            .col-md-3
+              = f.submit "Filtar listagem", name: nil, class: 'btn btn-secondary btn-sm filter-button'
+        .row
+          .col-md-12
+            %table.table.table-striped.table-bordered.table-hover
+              %thead
+                %tr
+                  %th Centro
+                  %th Nome
+                  %th FPA
+                  %th Vencimento
+                  %th Valor
+                  %th Situação
+                  %th Ações
+              %tbody
+                - @payables.each do |pay|
+                  %tr
+                    %td= pay.cost_center.name if pay.cost_center.present?
+                    %td= pay.name
+                    %td= pay.purchase.protocol if pay.purchase.present?
+                    %td= pay.date_payable.strftime("%d/%m/%Y") if pay.date_payable.present?
+                    %td= number_to_currency pay.value
+                    %td
+                      - if pay.status
+                        %span.label.label-success
+                          Pago 
+                      - else
+                        %span.label.label-danger
+                          Não pago
+                    %td.col-md-1
+                      = link_to "", edit_payable_path(pay), class: 'btn btn-xs glyphicon glyphicon-pencil btn-success'
+                      = link_to "", payable_path(pay), method: :delete, data: { confirm: t(:confirm_destroy)}, class: 'btn btn-xs btn-danger glyphicon glyphicon-remove'
+              %footer
+                %tr 
+                  %th{colspan: 4} Total
+                  %th= number_to_currency @payables.sum(:value)
+                  %th
+                  %th
