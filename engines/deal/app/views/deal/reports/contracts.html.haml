@@ -1,12 +1,10 @@
 = javascript_include_tag "//www.google.com/jsapi", "chartkick" 
 .row
   .col-sm-12
-    %section.panel
-      %header.panel-heading
-        .title 
-          Relatório Geral de Compras
-        %hr/
-      .panel-body
+    .portlet.portlet-boxed
+      .portlet-header
+        %h4.portlet-title Resumo de Compras
+      .portlet-body
         .row
           .col-md-12
             = simple_form_for contracts_reports_path, method: :get do |f|
@@ -15,8 +13,8 @@
                   = f.input :date_start, label: "Data início", input_html: { name: 'period[date_start]', class: 'date', value: (params[:period].present?) ? params[:period][:date_start] : Date.today.beginning_of_month.strftime('%d/%m/%Y')} 
                 .col-md-2
                   = f.input :date_end, label: "Data fim", input_html: { name: 'period[date_end]', class: 'date', value: (params[:period].present?) ? params[:period][:date_end] : Date.today.end_of_month.strftime('%d/%m/%Y')}
-                .col-md-2{style: 'margin-top: 30px'}
-                  = f.submit "Gerar Relatório", name: nil, class: 'btn btn-success'
+                .col-md-2{style: 'margin-top: 24px'}
+                  = f.submit "Gerar Relatório", name: nil, class: 'btn btn-success btn-sm', data: { disable_with: t(:disable_with) }
         %hr/
         - if params[:period].present?
           .row

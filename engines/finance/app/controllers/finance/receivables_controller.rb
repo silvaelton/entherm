@@ -49,7 +49,8 @@ module Finance
 
     def set_params
       params.require(:receivable).permit(:contract_id, :bill_category_id, :cost_center_id,
-                                       :name, :description, :observation, :receivable_date, :value,  :status)
+                                       :name, :description, :observation, :receivable_date, :value,  :status,
+                                        :date_check, :note_number)
     end
 
     def set_receivable

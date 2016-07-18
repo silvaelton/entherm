@@ -8,33 +8,41 @@
         .row
           = simple_form_for url_for, method: :get do |f|
             .col-md-3
-              = f.input :cost_center, label: "Centro de custo", as: :select, collection: Finance::CostCenter.all.order(:name), include_blank: "Todos"
+              = f.input :by_contract, label: "Centro de custo", as: :select, collection: Commercial::Contract.all.order(:title), include_blank: "Todos", selected: params[:by_contract], input_html: { name: 'by_contract'}
+            .col-md-2
+              = f.input :by_situation, label: "Situação", as: :select, selected: params[:by_situation], collection: [["Pago", 0], ["Não pago", 1]], include_blank: "Todos", input_html: { name: 'by_situation'}
+            .col-md-2
+              = f.input :by_start, label: "Início", as: :string, input_html: {class: 'date', name: 'by_start', value: params[:by_start]}
+            .col-md-2
+              = f.input :by_end, label: "Fim", as: :string, input_html: {class: 'date', name: 'by_end', value: params[:by_end]}
             .col-md-3
-              = f.input :start, label: "Início", as: :string, input_html: {class: 'date'}
-            .col-md-3
-              = f.input :end, label: "Fim", as: :string, input_html: {class: 'date'}
-            .col-md-3
-              = f.submit "Filtar listagem", name: nil, class: 'btn btn-secondary btn-sm filter-button'
+              = f.submit "Filtar listagem", name: nil, class: 'btn btn-secondary btn-sm filter-button', data: { disable_with: t(:disable_with)}
         .row
           .col-md-12
             %table.table.table-striped.table-bordered.table-hover
               %thead
                 %tr
                   %th Centro
-                  %th Nome
                   %th Contrato
+                  %th Nome
                   %th Vencimento
                   %th Valor
                   %th Situação
                   %th Ações
               %tbody
+                - @total_success = 0
+                - @total_danger  = 0
                 - @receivables.each do |rec|
                   %tr
-                    %td= rec.cost_center.name if rec.cost_center.present?
+                    %td= rec.contract.company.name if rec.contract.present? && rec.contract.company.present?
+                    %td= rec.contract.title if rec.contract.present?
                     %td= rec.name
-                    %td= rec.contract.name if rec.contract.present?
+                    %td= rec.contract.title if rec.contract.present?
                     %td= rec.receivable_date.strftime("%d/%m/%Y") if rec.receivable_date.present?
-                    %td= number_to_currency rec.value
+                    %td
+                      - @total_success  =  @total_success + rec.value.gsub('R$ ', '').to_f if rec.status
+                      - @total_danger   =  @total_danger + rec.value.gsub('R$ ', '').to_f unless rec.status
+                      = number_to_currency rec.value
                     %td
                       - if rec.status
                         %span.label.label-success
@@ -47,7 +55,11 @@
                       = link_to "", receivable_path(rec), method: :delete, data: { confirm: t(:confirm_destroy)}, class: 'btn btn-xs btn-danger glyphicon glyphicon-remove'
               %footer
                 %tr 
-                  %th{colspan: 4} Total
-                  %th= number_to_currency @receivables.sum(:value) if @receivables.present?
-                  %th
-                  %th
+                  %th{colspan: 3} Total efetivado
+                  %td
+                    %span.label.label-success
+                      = number_to_currency @total_success if @receivables.present?
+                  %th{colspan: 3} Total não efetivado
+                  %td
+                    %span.label.label-danger
+                      = number_to_currency @total_danger if @receivables.present?

@@ -49,7 +49,8 @@ module Finance
     def set_params
       params.require(:payable).permit(:contract_id, :bill_category_id, :cost_center_id,
                                        :name, :description, :observation, :type_payable, 
-                                       :purchase_id, :date_payable, :value,  :status)
+                                       :purchase_id, :date_payable, :value,  :status, :date_check,
+                                       :note_number)
     end
 
     def set_payable

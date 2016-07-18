@@ -17,13 +17,7 @@ module BRPopulate
       state_obj = Information::State.new(:acronym => state["acronym"], :name => state["name"])
       state_obj.save!
       
-      state["cities"].each do |city|
-        c = Information::City.new
-        c.name = city
-        c.state = state_obj
-        c.capital = capital?(city, state)
-        c.save!
-      end
+      
     end
   end
 end

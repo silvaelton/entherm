@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160711145740) do
+ActiveRecord::Schema.define(version: 20160718160443) do
 
   create_table "commercial_companies", force: :cascade do |t|
     t.string   "name"
@@ -296,6 +296,8 @@ ActiveRecord::Schema.define(version: 20160711145740) do
     t.string   "value",            default: "0"
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
+    t.string   "note_number"
+    t.date     "date_check"
   end
 
   add_index "finance_payables", ["bill_category_id"], name: "index_finance_payables_on_bill_category_id"
@@ -314,6 +316,9 @@ ActiveRecord::Schema.define(version: 20160711145740) do
     t.string   "value",            default: "0"
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
+    t.string   "note_number"
+    t.text     "observation"
+    t.date     "date_check"
   end
 
   add_index "finance_receivables", ["bill_category_id"], name: "index_finance_receivables_on_bill_category_id"

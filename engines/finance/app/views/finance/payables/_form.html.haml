@@ -1,7 +1,7 @@
 = simple_form_for @payable do |f|
   .row
     .col-md-4
-      = f.association :cost_center, label: "Centro de custo", include_blank: false
+      = f.association :contract, label: "Centro de custo", include_blank: false
     .col-md-4
       = f.association :bill_category, label: "Categoria", include_blank: "Nenhuma selecionada"
     .col-md-4
@@ -13,12 +13,21 @@
     .col-md-12
       = f.input :description, label: "Descrição"
   .row
+    .col-md-12
+      = f.input :observation, label: "Observação"
+  .row
     .col-md-4
       = f.input :date_payable, label: "Vencimento", as: :string, input_html: { class: 'date', value: f.object.date_payable.present? ? localize(f.object.date_payable) : nil}
     .col-md-4
-      = f.input :status, label: "Pago?", as: :select, include_blank: false
+      = f.input :note_number, label: "Número da nota", as: :string
     .col-md-4
       = f.input :value, label: "Valor", as: :string, input_html: { class: 'coin_mask'}
+  .row
+    .col-md-4
+      = f.input :status, label: "Pago?", as: :select, include_blank: false
+    .col-md-4
+      = f.input :date_check, label: "Data de efetivação", as: :string, input_html: { class: 'date', value: f.object.date_check.present? ? localize(f.object.date_check) : nil}
+  %hr/
   .row
     .col-md-12
       = f.submit "Adicionar conta à pagar", class: 'btn btn-success '

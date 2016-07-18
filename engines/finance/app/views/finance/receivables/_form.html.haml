@@ -1,11 +1,9 @@
 = simple_form_for @receivable do |f|
   .row
     .col-md-4
-      = f.association :cost_center, label: "Centro de custo", include_blank: false
+      = f.association :contract, label: "Centro de custo", include_blank: "Nenhum selecionada"
     .col-md-4
       = f.association :bill_category, label: "Categoria", include_blank: "Nenhuma selecionada"
-    .col-md-4
-      = f.association :contract, label: "Contrato", label_method: :protocol, include_blank: "Nenhum selecionada"
   .row
     .col-md-12
       = f.input :name, label: "Nome"
@@ -13,12 +11,20 @@
     .col-md-12
       = f.input :description, label: "Descrição"
   .row
+    .col-md-12
+      = f.input :observation, label: "Descrição"
+  .row
     .col-md-4
       = f.input :receivable_date, label: "Vencimento", as: :string, input_html: { class: 'date', value: f.object.receivable_date.present? ? localize(f.object.receivable_date) : nil}
     .col-md-4
-      = f.input :status, label: "Pago?", as: :select, include_blank: false
-    .col-md-4
+      = f.input :note_number, label: "Pago?", as: :select, include_blank: false
+    .col-md-3
       = f.input :value, label: "Valor", as: :string, input_html: { class: 'coin_mask'}
+  .row
+    .col-md-3
+      = f.input :status, label: "Pago?", as: :select, include_blank: false
+    .col-md-3
+      = f.input :date_check, label: "Data de efetivação", as: :string, input_html: { class: 'date', value: f.object.date_check.present? ? localize(f.object.date_check) : nil}
   %hr/
   .row
     .col-md-12

@@ -37,9 +37,6 @@
                   %li
                     %a{:href => "#{deal.control_orders_path}"}
                       Pedidos
-                  %li
-                    %a{:href => "#"}
-                      Balance de pedidos
       
                   %li.mega-menu-header
                     Interno
@@ -80,17 +77,11 @@
                 %ul.mega-menu-menu
                   %li.mega-menu-header Relatórios
                   %li
-                    %a{:href => "#"}
+                    %a{:href => "#{deal.contracts_reports_path}"}
                       Geral
                   %li
-                    %a{:href => "#"}
+                    %a{:href => "#{deal.by_contract_reports_path}"}
                       Por contrato & período
-                  %li
-                    %a{:href => "#"}
-                      Por categoria de compras
-                  %li
-                    %a{:href => "#"}
-                      Por fornecedor
         %li.dropdown
           %a.dropdown-toggle{"data-hover" => "dropdown", "data-toggle" => "dropdown", :href => "javascript:;"}
             Financeiro
@@ -106,9 +97,6 @@
                   %li
                     %a{:href => "#{finance.receivables_path}"}
                       Contas à receber
-                  %li
-                    %a{:href => "#{finance.cost_centers_path}"}
-                      Centro de custos
                   %li
                     %a{:href => "#{finance.bill_categories_path}"}
                       Categoria de contas
