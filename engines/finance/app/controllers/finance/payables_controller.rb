@@ -3,8 +3,11 @@ module Finance
   class PayablesController < ApplicationController
     before_action :set_payable, only: [:edit, :update,:destroy]
     
+    has_scope :by_contract
+    has_scope :by_status
+
     def index
-      @payables = Finance::Payable.all.order(:name)
+      @payables = apply_scopes(Finance::Payable).all.order('date_payable DESC')
     end
 
     def new
@@ -50,7 +53,8 @@ module Finance
       params.require(:payable).permit(:contract_id, :bill_category_id, :cost_center_id,
                                        :name, :description, :observation, :type_payable, 
                                        :purchase_id, :date_payable, :value,  :status, :date_check,
-                                       :note_number)
+                                       :note_number, payable_contracts_attributes: [:contract_id, :value, :_destroy, :id],
+                                       payable_purchases_attributes: [:purchase_id,:_destroy, :id])
     end
 
     def set_payable

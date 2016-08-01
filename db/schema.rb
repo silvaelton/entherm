@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160718160443) do
+ActiveRecord::Schema.define(version: 20160801112822) do
 
   create_table "commercial_companies", force: :cascade do |t|
     t.string   "name"
@@ -281,6 +281,27 @@ ActiveRecord::Schema.define(version: 20160718160443) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "finance_payable_contracts", force: :cascade do |t|
+    t.integer  "payable_id"
+    t.integer  "contract_id"
+    t.string   "value"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "finance_payable_contracts", ["contract_id"], name: "index_finance_payable_contracts_on_contract_id"
+  add_index "finance_payable_contracts", ["payable_id"], name: "index_finance_payable_contracts_on_payable_id"
+
+  create_table "finance_payable_purchases", force: :cascade do |t|
+    t.integer  "purchase_id"
+    t.integer  "payable_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "finance_payable_purchases", ["payable_id"], name: "index_finance_payable_purchases_on_payable_id"
+  add_index "finance_payable_purchases", ["purchase_id"], name: "index_finance_payable_purchases_on_purchase_id"
 
   create_table "finance_payables", force: :cascade do |t|
     t.integer  "contract_id"

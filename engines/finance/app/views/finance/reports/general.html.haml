@@ -1,0 +1,33 @@
+.row
+  .col-md-6
+    %h4 Contas à pagar
+  .col-md-6
+    %h4 Contas à receber
+.row
+  .col-md-6
+    %table.table.table-striped.table-bordered
+      %thead
+        %tr
+          %th Contrato
+          %th Total
+      %tbody
+        - @contracts.group(:contract_id).each do |item|
+          %tr
+            %td= item.contract.title if item.contract.present?
+            %td= number_to_currency @contracts.where(contract_id: item.contract_id).sum(:value)
+      %tfooter
+        %tr 
+          %th Total
+          %th= number_to_currency @contracts.sum(:value)
+  .col-md-6
+    %table.table.table-striped.table-bordered
+      %thead
+        %tr
+          %th Contrato
+          %th Total
+      %tbody
+
+      %tfooter
+        %tr 
+          %th Total
+          %th

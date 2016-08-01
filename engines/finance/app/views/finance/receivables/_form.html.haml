@@ -14,18 +14,18 @@
     .col-md-12
       = f.input :observation, label: "Descrição"
   .row
-    .col-md-4
+    .col-md-2
       = f.input :receivable_date, label: "Vencimento", as: :string, input_html: { class: 'date', value: f.object.receivable_date.present? ? localize(f.object.receivable_date) : nil}
     .col-md-4
-      = f.input :note_number, label: "Pago?", as: :select, include_blank: false
-    .col-md-3
+      = f.input :note_number, label: "Nota",  include_blank: false
+    .col-md-2
       = f.input :value, label: "Valor", as: :string, input_html: { class: 'coin_mask'}
-  .row
-    .col-md-3
+    .col-md-2
       = f.input :status, label: "Pago?", as: :select, include_blank: false
-    .col-md-3
+    .col-md-2
       = f.input :date_check, label: "Data de efetivação", as: :string, input_html: { class: 'date', value: f.object.date_check.present? ? localize(f.object.date_check) : nil}
   %hr/
   .row
     .col-md-12
-      = f.submit "Salvar conta à receber", class: 'btn btn-success '
+      = f.submit "Salvar conta à receber", class: 'btn btn-secondary '
+      = link_to "Retornar a listagem", payables_path, class: 'btn btn-default'

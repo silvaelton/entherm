@@ -100,42 +100,15 @@
                   %li
                     %a{:href => "#{finance.bill_categories_path}"}
                       Categoria de contas
-                %ul.mega-menu-menu
-                  %li.mega-menu-header Gestão
-                  %li
-                    %a{:href => "#"}
-                      Notas
-                  %li
-                    %a{:href => "#"}
-                      Boletos
-                  %li
-                    %a{:href => "#"}
-                      Caixa - Entrada e saída
-                        
-              .mega-menu-col
-                %ul.mega-menu-menu
-                  %li.mega-menu-header Pesquisa
-                  %li
-                    %a{:href => "#", :target => "_blank"}
-                      Pesquisa Nota
-                  %li
-                    %a{:href => "#", :target => "_blank"}
-                      Pesquisa por compra
               .mega-menu-col
                 %ul.mega-menu-menu
                   %li.mega-menu-header Relatórios
                   %li
-                    %a{:href => "#", :target => "_blank"}
+                    %a{:href => "#{finance.general_reports_path}"}
                       Geral
                   %li
-                    %a{:href => "#", :target => "_blank"}
-                      Por contrato & período
-                  %li
-                    %a{:href => "#", :target => "_blank"}
+                    %a{:href => "#{finance.contract_reports_path}"}
                       Por centro de custo
-                  %li
-                    %a{:href => "#", :target => "_blank"}
-                      Por fornecedor
         %li.dropdown
           %a.dropdown-toggle{"data-hover" => "dropdown", "data-toggle" => "dropdown", :href => "javascript:;"}
             Recursos Humanos

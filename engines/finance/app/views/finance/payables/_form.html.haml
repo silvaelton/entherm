@@ -1,13 +1,8 @@
 = simple_form_for @payable do |f|
   .row
     .col-md-4
-      = f.association :contract, label: "Centro de custo", include_blank: false
-    .col-md-4
       = f.association :bill_category, label: "Categoria", include_blank: "Nenhuma selecionada"
-    .col-md-4
-      = f.association :purchase, label: "FPA", label_method: :protocol, include_blank: "Nenhuma selecionada"
-  .row
-    .col-md-12
+    .col-md-8
       = f.input :name, label: "Nome"
   .row
     .col-md-12
@@ -15,19 +10,33 @@
   .row
     .col-md-12
       = f.input :observation, label: "Observação"
+  %hr/
   .row
-    .col-md-4
+    .col-md-2
       = f.input :date_payable, label: "Vencimento", as: :string, input_html: { class: 'date', value: f.object.date_payable.present? ? localize(f.object.date_payable) : nil}
     .col-md-4
       = f.input :note_number, label: "Número da nota", as: :string
-    .col-md-4
+    .col-md-2
       = f.input :value, label: "Valor", as: :string, input_html: { class: 'coin_mask'}
-  .row
-    .col-md-4
+    .col-md-2
       = f.input :status, label: "Pago?", as: :select, include_blank: false
-    .col-md-4
+    .col-md-2
       = f.input :date_check, label: "Data de efetivação", as: :string, input_html: { class: 'date', value: f.object.date_check.present? ? localize(f.object.date_check) : nil}
   %hr/
   .row
+    .col-md-5
+      %h4 Centro de custo 
+      = f.simple_fields_for :payable_contracts do |builder|
+        = render 'payable_contract_fields', f: builder 
+      = link_to_add_fields "adicionar centro de custo", f, :payable_contracts
+    .col-md-2
+    .col-md-5
+      %h4 FPA
+      = f.simple_fields_for :payable_purchases do |builder|
+        = render 'payable_purchase_fields', f: builder 
+      = link_to_add_fields "adicionar FPA", f, :payable_purchases
+  %hr/
+  .row
     .col-md-12
-      = f.submit "Adicionar conta à pagar", class: 'btn btn-success '
+      = f.submit "Adicionar conta à pagar", class: 'btn btn-secondary'
+      = link_to "Retornar a listagem", payables_path, class: 'btn btn-default'

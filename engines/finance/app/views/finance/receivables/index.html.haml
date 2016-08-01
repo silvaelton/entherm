@@ -11,10 +11,6 @@
               = f.input :by_contract, label: "Centro de custo", as: :select, collection: Commercial::Contract.all.order(:title), include_blank: "Todos", selected: params[:by_contract], input_html: { name: 'by_contract'}
             .col-md-2
               = f.input :by_situation, label: "Situação", as: :select, selected: params[:by_situation], collection: [["Pago", 0], ["Não pago", 1]], include_blank: "Todos", input_html: { name: 'by_situation'}
-            .col-md-2
-              = f.input :by_start, label: "Início", as: :string, input_html: {class: 'date', name: 'by_start', value: params[:by_start]}
-            .col-md-2
-              = f.input :by_end, label: "Fim", as: :string, input_html: {class: 'date', name: 'by_end', value: params[:by_end]}
             .col-md-3
               = f.submit "Filtar listagem", name: nil, class: 'btn btn-secondary btn-sm filter-button', data: { disable_with: t(:disable_with)}
         .row

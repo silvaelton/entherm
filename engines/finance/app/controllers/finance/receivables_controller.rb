@@ -4,8 +4,11 @@ module Finance
   class ReceivablesController < ApplicationController
     before_action :set_receivable, only: [:edit, :update,:destroy]
     
+    has_scope :by_contract
+    has_scope :by_situation
+    
     def index
-      @receivables = Finance::Receivable.all.order(:name)
+      @receivables = apply_scopes(Finance::Receivable).all.order('receivable_date DESC')
     end
 
     def new

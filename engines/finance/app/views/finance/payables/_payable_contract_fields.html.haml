@@ -1,0 +1,15 @@
+.row
+  %fieldset
+    .col-md-7
+      = f.association :contract, label: false, include_blank: "Selecione..."
+    .col-md-4
+      = f.input :value, label: false, as: :string, input_html: { class: 'coin_mask', pĺaceholder: 'R$ 0.00', value: f.object.value.present? ? f.object.value : 0}
+    .col-md-1
+      = f.hidden_field :_destroy
+      = link_to "remover", '#', class: "remove_fields btn btn-danger btn-sm"
+
+:javascript
+  $(document).ready(function() {
+    $('.coin_mask').maskMoney({prefix:'R$ ', allowNegative: true, allowZero:true, thousands:'', decimal:'.', affixesStay: false});
+  });
+    

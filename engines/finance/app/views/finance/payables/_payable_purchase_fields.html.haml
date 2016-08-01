@@ -1,0 +1,7 @@
+.row
+  %fieldset
+    .col-md-8
+      = f.association :purchase, label_method: :protocol, label: false, include_blank: "Selecione..."
+    .col-md-2
+      = f.hidden_field :_destroy
+      = link_to "remover", '#', class: "remove_fields btn btn-danger btn-sm"
