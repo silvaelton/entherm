@@ -7,6 +7,10 @@
       .portlet-body
         .row
           = simple_form_for url_for, method: :get do |f|
+            .col-md-2
+              = f.input :date_start, label: "Data início", input_html: { name: 'period[date_start]', class: 'date', value: (params[:period].present?) ? params[:period][:date_start] : Date.today.beginning_of_month.strftime('%d/%m/%Y')} 
+            .col-md-2
+              = f.input :date_end, label: "Data fim", input_html: { name: 'period[date_end]', class: 'date', value: (params[:period].present?) ? params[:period][:date_end] : Date.today.end_of_month.strftime('%d/%m/%Y')}
             .col-md-3
               = f.input :by_contract, label: "Centro de custo", as: :select, collection: Commercial::Contract.all.order(:title), include_blank: "Todos", selected: params[:by_contract], input_html: { name: 'by_contract'}
             .col-md-2
@@ -27,43 +31,46 @@
                   %th Situação
                   %th Ações
               %tbody
-                - @total_success = 0
-                - @total_danger  = 0
-                - @payables.each do |pay|
-                  %tr
-                    %td= pay.id
+                - @payables.each do |item|
+                  %tr 
                     %td
-                      - pay.payable_contracts.each do |item|
+                      = item.payable_id
+                    %td
+                      - item.payable.payable_contracts.each do |c|
                         %span.label.label-secondary{style: 'margin-left: 2px'}
-                          = item.contract.title if item.contract.present?
+                          = c.contract.title                        
                     %td
-                      - pay.payable_purchases.each do |item|
+                      - item.payable.payable_purchases.each do |p|
                         %span.label.label-secondary{style: 'margin-left: 2px'}
-                          = '#'
-                          = item.purchase.protocol if item.purchase.present?
-                    %td= pay.name
-                    %td= pay.date_payable.strftime("%d/%m/%Y") if pay.date_payable.present?
+                          = p.purchase.id         
                     %td
-                      - @total_success  =  @total_success + pay.value.gsub('R$ ', '').to_f if pay.status
-                      - @total_danger   =  @total_danger + pay.value.gsub('R$ ', '').to_f unless pay.status
-                      = number_to_currency pay.value.gsub('R$ ', '').to_f
+                      = item.payable.name
                     %td
-                      - if pay.status
+                      = item.due.strftime("%d/%m/%Y")
+                    %td
+                      = number_to_currency item.value
+                    %td
+                      - if item.pago?
                         %span.label.label-success
-                          Pago 
+                          Pago
                       - else
                         %span.label.label-danger
                           Não pago
-                    %td.col-md-1
-                      = link_to "", edit_payable_path(pay), class: 'btn btn-xs glyphicon glyphicon-pencil btn-success'
-                      = link_to "", payable_path(pay), method: :delete, data: { confirm: t(:confirm_destroy)}, class: 'btn btn-xs btn-danger glyphicon glyphicon-remove'
-              %footer
-                %tr 
-                  %th{colspan: 3} Total efetivado
-                  %td
-                    %span.label.label-success
-                      = number_to_currency @total_success if @payables.present?
-                  %th{colspan: 2} Total não efetivado
-                  %td
-                    %span.label.label-danger
-                      = number_to_currency @total_danger if @payables.present?
+                    %td 
+                      .dropdown
+                        %button.btn.btn-default.btn-xs.dropdown-toggle{"data-toggle" => "dropdown", :type => "button"}
+                          %i.glyphicon.glyphicon-cog
+                          %span.caret
+                        %ul.dropdown-menu
+                          %li
+                            %a{:href => "#{edit_payable_path(item.payable_id)}"} Visualizar/Editar
+                          %li
+                            - if item.pago?
+                              %a{:href => "#{update_payables_path(parcel_id: item.id)}"} Não pago
+                            - else
+                              %a{:href => "#{update_payables_path(parcel_id: item.id)}"} Pago
+                %tfooter
+                  %tr
+                    %th{colspan: 5} Total 
+                    %th{colspan: 3}= number_to_currency @payables.sum_values
+

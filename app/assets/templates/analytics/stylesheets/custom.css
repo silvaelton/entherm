@@ -1,3 +1,7 @@
+.side-border {
+  border-right: solid 1px #e8e8e8;
+}
+
 .required {
   color: black !important;
 }

@@ -1,9 +1,11 @@
 .row
   %fieldset
-    .col-md-6
-      = f.association :contract, label: false, include_blank: "Selecione..."
     .col-md-3
       = f.input :value, label: false, as: :string, input_html: { class: 'coin_mask', pĺaceholder: 'R$ 0.00', value: f.object.value.present? ? f.object.value : 0}
+    .col-md-3
+      = f.input :due, as: :string, input_html: { class: 'date', value: f.object.due.present? ? localize(f.object.due) : nil}, label: false
+    .col-md-3
+      = f.input :status, as: :select, collection: Finance::PayableParcel.statuses.map { |k,v| [k.humanize, k]}, label: false, include_blank: false
     .col-md-1
       = f.hidden_field :_destroy
       = link_to "", '#', class: "remove_fields btn btn-danger btn-sm glyphicon glyphicon-remove"

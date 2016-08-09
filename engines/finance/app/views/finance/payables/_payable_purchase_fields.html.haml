@@ -1,7 +1,7 @@
 .row
   %fieldset
-    .col-md-8
-      = f.association :purchase, label_method: :protocol, label: false, include_blank: "Selecione..."
+    .col-md-5
+      = f.input :purchase_id, as: :string, label: false, include_blank: "Nº FPA", input_html: { placeholder: "Insira o número da FPA"}
     .col-md-2
       = f.hidden_field :_destroy
-      = link_to "remover", '#', class: "remove_fields btn btn-danger btn-sm"
+      = link_to "", '#', class: "remove_fields btn btn-danger btn-sm glyphicon glyphicon-remove"

@@ -3,34 +3,37 @@
     .col-md-4
       = f.association :bill_category, label: "Categoria", include_blank: "Nenhuma selecionada"
     .col-md-8
-      = f.input :name, label: "Nome"
+      = f.input :name, label: "Nome", input_html: { placeholder: "Insira o nome da conta à pagar"}
   .row
     .col-md-12
-      = f.input :description, label: "Descrição"
+      = f.input :description, label: "Descrição", input_html: { placeholder: "Insira uma descrição"}
   .row
     .col-md-12
-      = f.input :observation, label: "Observação"
+      = f.input :observation, label: "Observação", input_html: { placeholder: "Insira uma observação"}
   %hr/
   .row
-    .col-md-2
-      = f.input :date_payable, label: "Vencimento", as: :string, input_html: { class: 'date', value: f.object.date_payable.present? ? localize(f.object.date_payable) : nil}
     .col-md-4
       = f.input :note_number, label: "Número da nota", as: :string
+    .col-md-4
+      = f.association :supplier, label: "Fornecedor", include_blank: "Nenhum selecionado..."
     .col-md-2
-      = f.input :value, label: "Valor", as: :string, input_html: { class: 'coin_mask'}
-    .col-md-2
-      = f.input :status, label: "Pago?", as: :select, include_blank: false
-    .col-md-2
-      = f.input :date_check, label: "Data de efetivação", as: :string, input_html: { class: 'date', value: f.object.date_check.present? ? localize(f.object.date_check) : nil}
-  %hr/
+      = f.input :value, label: "Valor Total", as: :string, input_html: { class: 'coin_mask'}
+
   .row
-    .col-md-5
+    .col-md-6.side-border
+      %h4 Parcelas
+      = f.simple_fields_for :payable_parcels do |builder|
+        = render 'payable_parcel_fields', f: builder 
+      = link_to_add_fields "adicionar parcela", f, :payable_parcels
+ 
+    .col-md-6
       %h4 Centro de custo 
       = f.simple_fields_for :payable_contracts do |builder|
         = render 'payable_contract_fields', f: builder 
       = link_to_add_fields "adicionar centro de custo", f, :payable_contracts
-    .col-md-2
-    .col-md-5
+  %hr/
+  .row
+    .col-md-12
       %h4 FPA
       = f.simple_fields_for :payable_purchases do |builder|
         = render 'payable_purchase_fields', f: builder 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160801112822) do
+ActiveRecord::Schema.define(version: 20160809033318) do
 
   create_table "commercial_companies", force: :cascade do |t|
     t.string   "name"
@@ -293,6 +293,18 @@ ActiveRecord::Schema.define(version: 20160801112822) do
   add_index "finance_payable_contracts", ["contract_id"], name: "index_finance_payable_contracts_on_contract_id"
   add_index "finance_payable_contracts", ["payable_id"], name: "index_finance_payable_contracts_on_payable_id"
 
+  create_table "finance_payable_parcels", force: :cascade do |t|
+    t.integer  "payable_id"
+    t.string   "value",      default: "0"
+    t.integer  "number",     default: 1
+    t.date     "due"
+    t.integer  "status",     default: 0
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  add_index "finance_payable_parcels", ["payable_id"], name: "index_finance_payable_parcels_on_payable_id"
+
   create_table "finance_payable_purchases", force: :cascade do |t|
     t.integer  "purchase_id"
     t.integer  "payable_id"
@@ -319,6 +331,7 @@ ActiveRecord::Schema.define(version: 20160801112822) do
     t.datetime "updated_at",                       null: false
     t.string   "note_number"
     t.date     "date_check"
+    t.integer  "supplier_id"
   end
 
   add_index "finance_payables", ["bill_category_id"], name: "index_finance_payables_on_bill_category_id"
