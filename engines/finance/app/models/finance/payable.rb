@@ -42,7 +42,7 @@ module Finance
         end
           
       else
-        errors.add(:value, "É necessário inserir ao menos uma parcela")
+        errors.add(:value, "É necessário inserir ao menos um centro de custo")
       end     
     end
 
