@@ -44,7 +44,7 @@ module Finance
     end
 
     def update
-      if @payable.update(set_params)
+      if @payable.update_nested_objects(set_params)
         flash[:success] = t :success
         redirect_to action: :index
       else

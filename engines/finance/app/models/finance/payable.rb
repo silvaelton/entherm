@@ -4,13 +4,13 @@ module Finance
     belongs_to :bill_category
     belongs_to :supplier, -> { order(:name)}, class_name: "Deal::Supplier"
 
-    has_many  :payable_purchases
-    has_many  :payable_contracts
-    has_many  :payable_parcels
+    has_many  :payable_purchases, inverse_of: :payable
+    has_many  :payable_contracts, inverse_of: :payable
+    has_many  :payable_parcels, autosave: true
 
     accepts_nested_attributes_for :payable_purchases,   allow_destroy: true
-    accepts_nested_attributes_for :payable_contracts,  allow_destroy: true
-    accepts_nested_attributes_for :payable_parcels,  allow_destroy: true
+    accepts_nested_attributes_for :payable_contracts,   allow_destroy: true
+    accepts_nested_attributes_for :payable_parcels,    allow_destroy: false
   
     
     scope :by_contract, -> (id) { 
@@ -21,9 +21,25 @@ module Finance
 
     validates :bill_category, :name, :description, :value, presence: true
     validates :date_check, presence: true, if: :check?
-
-    validate :parcel_validate
+  
     validate :contract_validate
+    validate :parcel_validate
+
+    def update_nested_objects(nested_attributes)
+
+      %w(parcels contracts purchases).each do |item|
+        if nested_attributes["payable_#{item}_attributes".to_sym].present?
+          nested_attributes["payable_#{item}_attributes".to_sym].each_with_index do |child, index|
+            if child[1][:_destroy].to_i == 1
+              self.send("payable_#{item}").find(child[1][:id].to_i).destroy 
+              nested_attributes["payable_#{item}_attributes".to_sym].delete(child[0].to_s)
+            end 
+          end
+        end
+      end
+
+      update(nested_attributes)
+    end 
 
     private
 

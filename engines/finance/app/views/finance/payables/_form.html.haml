@@ -19,25 +19,26 @@
     .col-md-2
       = f.input :value, label: "Valor Total", as: :string, input_html: { class: 'coin_mask'}
 
+  %hr/
   .row
     .col-md-6.side-border
       %h4 Parcelas
       = f.simple_fields_for :payable_parcels do |builder|
         = render 'payable_parcel_fields', f: builder 
       = link_to_add_fields "adicionar parcela", f, :payable_parcels
- 
-    .col-md-6
-      %h4 Centro de custo 
+    .col-md-6.side-border
+      %h4 Centros de custo
       = f.simple_fields_for :payable_contracts do |builder|
         = render 'payable_contract_fields', f: builder 
       = link_to_add_fields "adicionar centro de custo", f, :payable_contracts
   %hr/
   .row
-    .col-md-12
+    .col-md-6
       %h4 FPA
       = f.simple_fields_for :payable_purchases do |builder|
         = render 'payable_purchase_fields', f: builder 
       = link_to_add_fields "adicionar FPA", f, :payable_purchases
+  
   %hr/
   .row
     .col-md-12
